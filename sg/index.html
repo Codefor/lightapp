@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<meta content="telephone=no" name="format-detection">
+		<meta content="email=no" name="format-detection">
+		<meta content="yuebin" name="author">
+		<title>大选妃</title>
+		<style>
+
+html,body{background-color:#F3C5CD;height:100%;margin:0;padding:0;width:100%;}
+*,*:active{-webkit-tap-highlight-color: transparent;-webkit-tap-highlight-color:rgba(0, 0, 0, 0);outline: none;}
+#max_frame{font-family:"Microsoft YaHei"!important;height:100%;margin:0;padding:0;width:100%;min-height: 450px;min-width: 320px;overflow: hidden;}
+#pageoneframe{display:none;height:100%;position:absolute;width:100%;}
+#pagetwoframe{background:url(img/b.jpg) no-repeat center;background-size:100% 100%;display:none;height:100%;position:absolute;width:100%;}
+#pagethreeframe{background:url(img/b.jpg) no-repeat center;background-size:100% 100%;display:none;height:100%;margin-top:450px;opacity:0.1;overflow:hidden;position:absolute;width:100%;z-index:10;}
+#pagefourframe{background:url(img/b.jpg) no-repeat center;background-size:100% 100%;display:none;height:100%;margin-top:450px;opacity:0.1;overflow:hidden;position:absolute;width:100%;z-index:10;}
+#pagefiveframe{background:url(img/b.jpg) no-repeat center;background-size:100% 100%;display:none;height:100%;margin-top:450px;opacity:0.1;overflow-x:hidden;position:absolute;width:100%;z-index:10;}
+.frame{position:relative;height:100%;min-height:450px;width: 320px;}
+.frame_page1{position:relative;height:100%;min-height:450px;min-width:320px; max-width:400px;}
+.frame_page1 #page1{background:url(img/b1.jpg) no-repeat center -20px;background-size:100%;height:100%;width:100%;}
+#page1_button{position:absolute;height:60px;left:21%;top:377px;width:62%;cursor: pointer;}
+.frame #page2{height:100%;text-align:center;width:100%;}
+.frame .page5{float:left;height:70px;margin-left:10px;margin-top:20px;width:300px;}
+.frame .page5:last-child{margin-bottom: 80px;}
+.page5 .rankingimg{background-size:100%;border:2px solid #fff;border-radius:50%;float:left;height:100%;width:70px;}
+.page5 span{float:left;line-height:70px;margin-left:10px;text-align: left;overflow: hidden;white-space: nowrap;}
+.page5 .order{width: 20px;}
+.page5 .name{width: 85px;}
+.page5 .vote{width: 55px;}
+.page5 .rankingxin{background:url(img/xin.png) no-repeat center;background-size:auto 30px;float:left;height:100%;width:35px;margin-left:-25px;}
+.img1{background-size:100%;border:5px solid #fff;border-radius:50%;float:left;height:190px;margin-left:64px;margin-right:auto;margin-top:12px;position:absolute;text-align:center;width:190px;z-index:5;cursor: pointer;}
+.img2{background-size:100%;border:5px solid #fff;border-radius:50%;float:left;height:190px;margin-left:64px;margin-right:auto;margin-top:243px;position:absolute;width:190px;z-index:5;cursor: pointer;}
+.img3{background-size:100%;border:5px solid #fff;border-radius:50%;display:none;float:left;height:190px;margin-top:-90px;margin-left:64px;margin-right:auto;opacity:0.1;position:absolute;width:190px;z-index:5;cursor: pointer;}
+.img4{background-size:100%;border:5px solid #fff;border-radius:50%;display:none;float:left;height:190px;margin-left:64px;margin-right:auto;margin-top:341px;opacity:0.1;position:absolute;width:190px;z-index:5;cursor: pointer;}
+.rear_top{-webkit-transition:all 500ms ease-out 0;margin-top:10px;opacity:1;transition:all 500ms ease-out 0;z-index:6;}
+.rear_bottom{-webkit-transition:all 500ms ease-out 0;margin-top:241px;opacity:1;transition:all 500ms ease-out 0;z-index:6;}
+.front_top{display:none;margin-top:-90px;opacity:0.1;z-index:5;}
+.front_bottom{display:none;margin-top:341px;opacity:0.1;z-index:5;}
+#page2 #vs{background:url(img/vs.png) no-repeat center;background-size:100%;float:left;height:50px;margin-left:136px;margin-right:auto;margin-top:202px;position:absolute;width:48px;z-index:9;}
+#page2 #hint1{background:url(img/t1.png) no-repeat center;background-size:100%;float:left;height:200px;margin-left:35px;margin-top:230px;opacity:0.1;position:absolute;width:250px;z-index:10;}
+#hint1 #suresub{color:#fff;float:left;font-size:.7rem;height:23px;line-height:23px;margin-left:68px;margin-top:3px;width:123px;cursor: pointer;}
+#hintsub{float:left;height:88px;margin-left:38px;margin-top:60px;width:174px;}
+#page3 #title{float:left;font-size:22px;font-weight:700;height:26px;line-height:26px;margin-top:50px;width:100%;}
+#page3 #imglist{float:left;height:128px;margin-left:28px;margin-top:31px;width:266px;}
+#smallframe{float:left;height:127px;width:127px;}
+#bigframe{border-radius:10px;float:left;height:127px;margin-left:5px;width:134px;}
+#smallframe div{border-radius:10px;float:left;height:62px;width:62px;}
+#smallframe div img{border-radius:10px;height:62px;width:62px;}
+#smallframe #small2,#small4{margin-left:3px;}
+#smallframe #small3,#small4{margin-top:3px;}
+#showgirl{color:#D61273;float:left;font-size:33px;font-style:oblique;font-weight:700;height:65px;line-height:32px;margin-top:13px;width:100%;}
+#share{background:url(img/showgirl-04.png) no-repeat center;background-size:100% 100%;float:left;height:50px;margin-left:60px;margin-top:19px;width:200px;cursor: pointer;}
+#reflect5{border-radius:5px;height:127px;width:134px;}
+#shareimg{background:url(img/fx.png) no-repeat right;background-size:auto 100%;float:right;height:43px;margin-top:6px;width:100%;}
+#shareimg span{color:#fff;float:right;line-height:43px;margin-right:40px;text-align:right;cursor: pointer;}
+#sharetext{float:left;line-height:26px;margin-left:30px;margin-top:10px;text-align:left;width:260px;}
+#sharetext div{text-align:center;}
+#sharetext div a{color:#fff;}
+#lottery{background:url(img/choujiang-04.png) no-repeat center;background-size:100% 100%;float:left;height:50px;margin-left:60px;width:200px;}
+#drawinfo{display:none;float:left;line-height:25px;margin-left:30px;margin-top:20px;text-align:left;width:260px;}
+#drawinfo span{color:#ED7D31;font-size:22px;}
+#xinlang{float:left;font-size:13px;height:30px;line-height:30px;margin-left:30px;margin-top:18px;text-align:center;width:260px;}
+#xinlang a {font-size: 1rem;color: #000;font-weight: bold;}
+.frame #page3,.frame #page4{height:100%;width:100%;}
+.xin{display:none;position:absolute;left:165px;top:114px;width:80px;margin-left:-40px;margin-top:-36.5px;opacity:1;z-index:9;}
+.xin-zoomout{width: 120px;margin-left: -60px;margin-top: -55px;opacity:0.1;transition:all 900ms}
+@media screen and (min-width: 330px) {
+	#page1_button{top:389px;}
+}
+@media screen and (min-width: 340px) {
+	#page1_button{top:401px;}
+}
+@media screen and (min-width: 350px) {
+	#page1_button{top:413px;}
+}
+@media screen and (min-width: 360px) {
+	#page1_button{top:425px;}
+}
+@media screen and (min-width: 370px) {
+	#page1_button{top:437px;}
+}
+@media screen and (min-width: 380px) {
+	#page1_button{top:451px;}
+}
+@media screen and (min-width: 390px) {
+	#page1_button{top:465px;}
+}
+		</style>
+		
+	</head>
+	<body>
+		<div class="max_frame" id="max_frame">
+			<div id="pageoneframe" align="center">
+				<div class="frame_page1">
+					<div id="page1">
+						<a id="page1_button" hidefocus="true"></a>
+					</div>
+				</div>
+			</div>
+			
+			<div id="pagetwoframe" align="center">
+				<div class="frame">
+					<div id="page2" align='center'>
+						<div id="img1" class="img1" onclick="ensure('img1');"></div>
+						<div id="img2" class="img2" onclick="ensure('img2');"></div>
+						<div id="img3" class="img3" onclick="ensure('img3');"></div>
+						<div id="img4" class="img4" onclick="ensure('img4');"></div>
+						<img id="xin1" class="xin" src="img/xin.png"/>
+						<div id="vs"></div>
+						<div id="hint1">
+							<div id="hintsub">
+								殿下，20位妹子已经恭候多时，奴才已经将她们分成10组，请殿下在每组两人之中选出一个
+							</div>
+							<div id="suresub" onclick="message_hidden();">朕知道了，退下吧</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div id="pagethreeframe" align='center'>
+				<div class="frame">
+					<div id="page3">
+						<div id="title">殿下，臣妾已恭候多时</div>
+						<div id="imglist">
+							<div id="smallframe">
+								<div id="small1">
+									<img src="" id="reflect1" class="reflect"/>
+								</div>
+								<div id="small2">
+									<img src="" id="reflect2" class="reflect"/>
+								</div>
+								<div id="small3">
+									<img src="" id="reflect3" class="reflect"/>
+								</div>
+								<div id="small4">
+									<img src="" id="reflect4" class="reflect"/>
+								</div>
+							</div>
+							<div id="bigframe" align="left">
+								<img src="" id="reflect5" class="reflect" />
+							</div>
+						</div>
+						<div id="xinlang">
+								<a href="javascript:void(0)" onclick="rank();">查看Showgirl排名>></a>
+                        </div>
+						<div id="showgirl">ShowGirl 大选妃,<br/>你会选谁?</div>
+						<div id="share" onclick="showpage4();"></div>
+					</div>
+				</div>
+			</div>
+			
+			<div id="pagefourframe" align='center'>
+				<div class="frame">
+					<div id="page4">
+						<div id="shareimg"><span>分享</span></div>
+						<div id="sharetext" align="center">分享给朋友，邀请他们参与showgirl大选妃吧，<br/>
+							<div>
+								<a href="javascript:void(0)" onclick="rank();">查看Showgirl排名>></a>
+							</div>
+							关注微信公众号：UC_9game<br />
+							互动回复分享截屏，可立即获得九游精美礼品一份
+							<div>
+								<a>点击下方还可再得一份奖品哦</a>
+							</div>
+						</div>
+						<div id="lottery" onclick="lottery();"></div>
+						<div id="drawinfo">
+							<span id="lottery-info">恭喜你，获得精美礼品一份！</span><br />
+							兑换码：<span id="prize-code"></span><br />
+							登录<a href="http://www.tootoo.cn" target="_blank">www.tootoo.cn</a>，凭兑换码领取
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="pagefiveframe" align='center'>
+				<div class="frame">
+					<div style="position:fixed;width:100px;height:40px;background: url(img/bt.png) no-repeat center;background-size: 100%;line-height:40px;margin-left:110px;bottom:20px;" onclick="backpage4();">返回</div>
+				</div>
+			</div>
+		</div>
+		<script src="http://libs.baidu.com/zepto/0.8/zepto.min.js"></script>
+		<script>
+		//pk List 数据
+		var imglist = [{
+	    	id: "0",
+		    img: "img/Tirling.jpg",
+		},{
+		    id: "1",
+		    img: "img/Sherr-yy.jpg",
+		},{
+		    id: "2",
+		    img: "img/xpz__mao.jpg",
+		},{
+		    id: "3",
+		    img: "img/Somnus_0123.jpg",
+		},{
+		    id: "4",
+		    img: "img/xinruo92.jpg",
+		},{
+		    id: "5",
+		    img: "img/sissi37.jpg",
+		},{
+		    id: "6",
+		    img: "img/xlyf_wenwen0718.jpg",
+		},{
+		    id: "7",
+		    img: "img/Eva.jpg",
+		},{
+		    id: "8",
+		    img: "img/yuyu98063.jpg",
+		},{
+		    id: "9",
+		    img: "img/Sinkyran.jpg",
+		},{
+	    	id: "10",
+		    img: "img/wmxnr.jpg",
+		},{
+		    id: "11",
+		    img: "img/Lujiayi1.jpg",
+		},{
+		    id: "12",
+		    img: "img/cathrin_qiqi.jpg",
+		},{
+		    id: "13",
+		    img: "img/promise_yuu.jpg",
+		},{
+		    id: "14",
+		    img: "img/wcn19921107.jpg",
+		},{
+		    id: "15",
+		    img: "img/H_909545397.jpg",
+		},{
+		    id: "16",
+		    img: "img/zoey.jpg",
+		},{
+		    id: "17",
+		    img: "img/yinyy.jpg",
+		},{
+		    id: "18",
+		    img: "img/cjw_Bao.jpg",
+		},{
+		    id: "19",
+		    img: "img/leeleeleezoe.jpg",
+		}]
+		//排名数据
+
+		/**
+		 *选中图片回调 
+		 * obj.img 图片地址
+		 * obj.wid 图片id
+		 */
+		function result(obj){
+			/**
+			 * 可向后台发送所选数据
+			 */
+            $.ajax({
+                url:'log.php',
+                type:'post',
+                dataType:'json',
+                async:false,
+                data:obj,
+                success:function(result){
+                    prizeCode=result.code;
+                }
+            });
+		}
+
+		/**
+		 * 点击分享
+		 */
+		$('#shareimg').click(function () {
+			//分享代码
+			console.log('share');
+		});
+
+		//点击抽奖
+		function lottery(){
+			var prizeCode;
+			//判断是否设置cookie
+			var prizeMatch = document.cookie.match(/prizeCode=([^;]+)/)
+			if (prizeMatch) {
+				prizeCode = prizeMatch[1];
+				$('#lottery-info').text('您已经抽过奖了！');
+                $('#prize-code').text(prizeCode);
+                g('drawinfo').style.display = "block";
+			} else {
+                $.ajax({
+                    url:'prize.php',
+                    type:'post',
+                    dataType:'json',
+                    async:false,
+                    success:function(result){
+                        if(result.status == -1){
+				            $('#lottery-info').text('奖品已抽完，下次，下次吧！');
+                        }else{
+                            prizeCode = result.prizeCode;
+				            setCookie('prizeCode', prizeCode);
+
+                            $('#prize-code').text(prizeCode);
+                            g('drawinfo').style.display = "block";
+                        }
+                    }
+                });
+			}
+		}
+		</script>
+		<script src="js/concubine.js"></script>
+        <script>
+            var dataForWeixin={
+                appId:"",
+                MsgImg:"http://demo.timepearls.com/sg/img/b1_thumb.jpg",
+                TLImg:"http://demo.timepearls.com/sg/img/b1_thumb.jpg",
+                url:"http://demo.timepearls.com/sg/",
+                title:"ShowGirl大选妃，你会选谁？",
+                desc:"殿下，二十位妃子已恭候多时，点击进入ShowGirl大选妃>>>",
+                fakeid:"",
+                callback:function(){}
+            };
+            (function(){
+                var onBridgeReady=function(){
+                    WeixinJSBridge.on('menu:share:appmessage', function(argv){
+                        WeixinJSBridge.invoke('sendAppMessage',{
+                            "appid":dataForWeixin.appId,
+                                "img_url":dataForWeixin.MsgImg,
+                                "img_width":"120",
+                                "img_height":"120",
+                                "link":dataForWeixin.url,
+                                "desc":dataForWeixin.desc,
+                                "title":dataForWeixin.title
+                        }, function(res){(dataForWeixin.callback)();});
+                    });
+                    WeixinJSBridge.on('menu:share:timeline', function(argv){
+                        (dataForWeixin.callback)();
+                        WeixinJSBridge.invoke('shareTimeline',{
+                            "img_url":dataForWeixin.TLImg,
+                                "img_width":"120",
+                                "img_height":"120",
+                                "link":dataForWeixin.url,
+                                "desc":dataForWeixin.desc,
+                                "title":dataForWeixin.title
+                        }, function(res){});
+                    });
+                    WeixinJSBridge.on('menu:share:weibo', function(argv){
+                        WeixinJSBridge.invoke('shareWeibo',{
+                            "content":dataForWeixin.title,
+                                "url":dataForWeixin.url
+                        }, function(res){(dataForWeixin.callback)();});
+                    });
+                    WeixinJSBridge.on('menu:shareacebook', function(argv){
+                        (dataForWeixin.callback)();
+                        WeixinJSBridge.invoke('shareFB',{
+                            "img_url":dataForWeixin.TLImg,
+                                "img_width":"120",
+                                "img_height":"120",
+                                "link":dataForWeixin.url,
+                                "desc":dataForWeixin.desc,
+                                "title":dataForWeixin.title
+                        }, function(res){});
+                    });
+                };
+                if(document.addEventListener){
+                    document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+                }else if(document.attachEvent){
+                    document.attachEvent('WeixinJSBridgeReady'   , onBridgeReady);
+                    document.attachEvent('onWeixinJSBridgeReady' , onBridgeReady);
+                }
+            })();
+        </script>
+        <script src="//libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+        <script src="//track.timepearls.com/js_tracker.min.js"></script>
+	</body>
+</html>
