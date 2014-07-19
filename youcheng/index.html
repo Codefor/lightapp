@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<meta content="email=no" name="format-detection">
+<meta content="yuebin" name="author">
+<title>公益总动员</title>
+<style type="text/css"> 
+    /* 浏览器重置样式 [[*/
+    body,div,section,p,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,form,fieldset,legend,input,select,textarea,button,th,td,menu{margin:0;padding:0;box-sizing:border-box;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;}
+    article,aside,dialog,figure,footer,header,hgroup,nav,section{display:block;}
+    h1,h2,h3,h4,h5,h6,input,textarea,select,button,label{font-size:100%;font-weight:100;}
+    input,textarea,select,button,label{vertical-align:middle;}
+    img,fieldset,input[type="submit"]{border:none;}
+    input{outline:none;background:transparent;vertical-align:top;}
+    input::-ms-clear{display:none;}
+    table{border-collapse:collapse;border-spacing:0;}        
+    button{cursor:pointer;border:none;}
+    textarea{word-wrap:break-word;resize:none;-webkit-box-shadow:none;}
+    input,textarea,select{-webkit-appearance:none;outline:none;}
+    input:-moz-placeholder{color:#C4C4C4;}
+    ::-webkit-input-placeholder{color:#C4C4C4;}
+    select::-ms-expand{display:none;}
+    ::-ms-check{display:none;}
+    body{font-family:"Microsoft YaHei";-webkit-user-select:none;-khtml-user-select:none;-ms-user-select:none;user-select:none;-webkit-text-size-adjust:none;-webkit-tap-highlight-color:rgba(0,0,0,0.4);overflow:hidden;font-size:100%;line-height:1.5;background:#1C1F26;}
+    body,html{height:100%;}
+    a{text-decoration:none;color:#333333;-webkit-touch-callout:none;}
+    a:hover{background-color:;}
+    a,button,input{-webkit-touch-callout:none;}
+    /* 浏览器重置样式 ]]*/
+
+    body{height:100%;}
+    #init{display:block;}
+    .main{display:none;position:relative;min-width:320px;height:100%;margin:0 auto;padding-top:14.5%;background:url(img/bg-1.jpg) no-repeat;background-size:100% 100%;}
+    .title-con{width:320px;height:103px;margin:0 auto;background:url(img/title-bg.png) no-repeat;background-size:100%;font-size:2.25rem;color:#fff;transform:rotate(7.5deg)}
+    .title-con h1{width:300px;margin:0 auto;padding-top:6px;text-align:center;line-height:103px;-webkit-transform:rotate(-3.6deg);-moz-transform:rotate(-3.6deg);-o-transform:rotate(-3.6deg);-ms-transform:rotate(-3.6deg);transform:rotate(-3.6deg);}
+    .main-text{width:320px;margin:0 auto;margin-top:5%;}
+    .main-text p{width:80%;margin:0 auto;font-size:0.7rem;color:#0099CC;text-indent:2em;line-height:1.3;}
+    .main-text p:last-child{margin-top:3%;font-size:1rem;color:#FFC000;text-indent:0;}
+    .role-select{position:relative;width:256px;margin:0 auto;margin-top:5%;}
+    .role-select button{width:70px;height:69px;border-radius:34.5px;outline:none;}
+    .role-select .student{background:url(img/student.png) center center;background-size:100% 100%;}
+    .role-select .worker{margin:0 18px;background:url(img/worker.png) center center;background-size:100% 100%;}
+    .role-select .regal{background:url(img/regal.png) center center;background-size:100% 100%;}
+    .role-select .selected{border:5px solid #FFC000;background-size:70px 69px;}
+    .role-select p{opacity:0;position:absolute;font-size:0.75rem;line-height:1.2;color:#fff;}
+    .role-select .student-tips{top:-52px;left:5px;width:260px;height:55px;padding:3px;background:url(img/student-tips-bg.png);background-size:100% 100%;}
+    .role-select .worker-tips{top:-50px;left:0;width:260px;height:54px;padding:3px 0 0 7px;background:url(img/worker-tips-bg.png);background-size:100% 100%;}
+    .role-select .regal-tips{top:-50px;left:0;width:260px;height:52px;padding:1px 7px;background:url(img/regal-tips-bg.png);background-size:100% 100%;}
+    .btn-con{margin-top:4%;text-align:center;}
+    .btn-con .go{visibility:hidden;width:60px;height:30px;background:url(img/go-bg.png);background-size:100% 100%;border-radius:5px;outline:none;opacity:0;}
+
+    .topic{display:none;background:url(img/bg-2.jpg);background-size:100% 100%;font-size:0.9rem;}
+    .topic-con{width:290px;margin:0 auto;overflow:hidden;}
+    .topic-title{height:64px;padding:22px 0 0 25px;background:url(img/topic-bg.png);background-size:100% 100%;color:#fff;line-height:1.4;}
+    .topic-title span{float:left;}
+    .topic-title p{margin:0 0.5em 0 1em;}
+    .answer-list{height:184px;margin-top:10%;list-style:none;color:#fff;}
+    .answer-list li{position:relative;left:320px;margin-bottom:15px;}
+    .answer-list li:first-child,.answer-list li:last-child{left:-320px;}
+    .answer-list li span{float:left;width:15px;height:17px;padding:5px;background:url(img/answer-icon.png);background-size:100% 100%;}
+    .answer-list li p{width:249px;margin-left:26px;padding:5px;background-color:#7CC7CA;border-radius:5px;line-height:1.4;}
+    .answer-list .selected{margin-bottom:5px;}
+    .answer-list .selected p{width:259px;position:relative;top:-5px;left:-5px;border:5px solid #FFFF99;}
+    .next-con{margin-top:15px;text-align:right;}
+    .next{visibility:hidden;opacity:0;width:60px;height:45px;background:url(img/next.png);background-size:100% 100%;}
+
+    .response{display:none;position:relative;min-height:400px;background:url(img/bg-3.jpg);background-size:100% 100%;font-size:0.9rem;}
+    .response-con{width:280px;margin:0 auto;}
+    .response-con .tips-text{margin:0 15px;color:#0099CC;font-size:1rem;font-weight:bold;}
+    .response-con .tips-text em{color:#FF9933;font-style:normal;}
+    .response-p{position:absolute;width:288px;height:280px;margin-left:-144px;left:50%;bottom:0;}
+    .response-p p{width:250px;height:100px;margin-left:20px;padding-top:15px;background:url(img/response-bg.png);background-size:100% 100%;font-size:2.25rem;text-align:center;color:#fff;}
+    .response-p .response-p-img{position:relative;top:200px;width:110px;height:155px;background:url(img/response-p1.png);background-size:100% 100%;}
+    .response-p2 .response-p-img{width:100px;height:144px;background:url(img/response-p2.png);background-size:100% 100%;}
+    .response-p3 .response-p-img{width:150px;height:146px;background:url(img/response-p3.png);background-size:100% 100%;}
+    .response-p .next{position:absolute;top:110px;right:10px;}
+
+    .summary{background:none;background-color:#00AAC1;padding-top:5%;}
+    .summary-con{width:280px;margin:0 auto;text-align:center;color:#fff;}
+    .star-level span{display:inline-block;width:40px;height:37px;background:url(img/star.png);background-size:100% 100%;}
+    .star-level .star-gain{background:url(img/star-gain.png) no-repeat center;background-size:0% 0%;}
+    
+    .summary-con p em{margin-left:5px;font-size:1.5rem;font-style:normal;line-height:1;}
+    .summary-list{width:260px;height:131px;padding:20px 0 0 5px;margin:0 auto;background:url(img/summary-bg.png);background-size:100% 100%;list-style:none;}
+    .summary-list-img{float:left;width:30px;height:30px;border-radius:15px;background-color:#388796;overflow:hidden;}
+    .summary-list-img img{width:80%;margin-top:5px;}
+    .summary-list li{height:35px;overflow:hidden;}
+    .summary-list p{margin-left:40px;margin-right:15px;font-size:0.7rem;text-align:left;}
+    .summary-text{width:245px;margin:0 auto;margin-top:10px;font-size:0.7rem;color:#003399;text-align:left;}
+    .summary .zoom{width:50px;height:51px;margin-top:5px;background:url(img/zoom.png);background-size:100% 100%;}
+    .zoom-tips{font-size:0.7rem;}
+    .mask-layer{display:none;opacity:0;position:absolute;top:0;left:0;width:100%;height:100%;padding-top:10%;background-color:#fff;text-align:center;}
+    .mask-layer h3{width:100px;height:98px;margin:0 auto;padding:6px 0 0 10px;background:url(img/zoom-big.png);background-size:100% 100%;font-size:2.5rem;color:#FF9933;text-align:left;}
+    .mask-layer h4{margin-top:8%;font-size:1.5rem;}
+    .mask-layer img{margin:8% 0;}
+    .mask-layer p{font-weight:bold;font-size:1rem;line-height:2;}
+    .mask-layer .fund a{display:inline-block;background-color:#F00;padding:0 10px;border-radius:10px;color:#fff;text-decoration:none;}
+
+    .main .fade-in{visibility:visible;transition:all 500ms ease-out 0ms;-webkit-transition: all 500ms ease-out 0ms;opacity: 1;}
+    .main .answer-list .slide-in{left:0;transition:left 500ms ease-out 0ms;-webkit-transition: left 500ms ease-out 0ms;}
+    .main .response-p .img-slide-in{top:0;transition:top 500ms ease-out 0ms;-webkit-transition: top 500ms ease-out 0ms;}
+    .star-level .star-zoomin{background-size:100% 100%;transition:all 500ms ease-out 0ms;-webkit-transition: all 500ms ease-out 0ms;}
+
+    .share-panel{
+        position:absolute;
+        top:0;
+        right:0;
+    }
+    .share-btn{
+        position:absolute;
+        top:5px;
+        right:10px;
+        display:inline-block;
+        width:19px;
+        height:23px;
+        background:url(img/share-icon.png);
+        background-size:100% 100%;
+    }
+    .share-panel p{
+        margin:23px 20px 0 0;
+        font-size:.5rem;
+        line-height:1.1;
+    }
+</style>
+</head>
+<body>
+    <section id="init" class="main">
+        <section class="title-con"><h1>公益总动员</h1></section>
+        <section class="main-text">
+		    <br>
+            <p>致毒的雾霾、污染的水源，你的身体消耗了多少？昂贵的医疗、低质的教育，你的生活又承担了多少？</p>
+            <p>作为有理想、有抱负的有为之士，你，将担当起一项巨大的责任——成为社会企业家，拯救我们共同的未来！</p>
+            <p>选择角色，开始公益之旅…</p>
+        </section>
+        <section id="role-select" class="role-select">
+            <button id="student" class="student"></button>
+            <button id="worker" class="worker"></button>
+            <button id="regal" class="regal"></button>
+            <p id="student-tips" class="student-tips">学生：20岁<br>担负建设祖国未来的重任，爱上网，爱八卦，喜社交，喜穷游，走在娱乐流行的前沿</p>
+            <p id="worker-tips" class="worker-tips">白领：35岁<br>承受事业与家庭的双重压力，常加班，常熬夜，打扮精致，处事干练，处于人生的上升期</p>
+            <p id="regal-tips" class="regal-tips">富豪：50岁<br>事业成功，家庭幸福，实现梦想，享受生活，追求自己的内心，掌控自己的人生</p>
+        </section>
+        <section class="btn-con">
+            <button id="go" class="go"></button>
+        </section>
+    </section>
+    <section class="main topic">
+        <section class="topic-con">
+            <section class="topic-title">
+                <span class="index">1.</span>
+                <p>如果要开展一个公益项目，你会选择解决下面哪一个问题作为自己的目标？</p>
+            </section>
+            <ul data-index="0" class="answer-list">
+                <li data-selected="A">
+                    <span>A.</span>
+                    <p>亲戚的孩子家住红旗乡，他所就读的学校近年来出现多名学生辍学、转学</p>
+                </li>
+                <li data-selected="B">
+                    <span>B.</span>
+                    <p>在我们身边，生活垃圾、土壤沙化、全球变暖等环境问题愈发严重</p>
+                </li>
+                <li data-selected="C">
+                    <span>C.</span>
+                    <p>去年旅游走过的西南某山区自然资源丰富，风光秀美，但当地经济发展滞后</p>
+                </li>
+            </ul>
+            <section class="next-con">
+                <button data-index="0" class="next"></button>
+            </section>
+        </section>
+    </section>
+    <section class="main response">
+        <section class="response-con">
+            <p class="tips-text">你选择的<em>公益目标（Aim）</em>很棒，我将资助你20w的启动天使币……</p>
+        </section>
+        <section class="response-p">
+            <p>Good Job!</p>
+            <section class="response-p-img"></section>
+            <button class="next"></button>
+        </section>
+    </section>
+    <section class="main topic">
+        <section class="topic-con">
+            <section class="topic-title">
+                <span class="index">2.</span>
+                <p>明确的目标只是一个良好的开始，下一步你会设计怎样的公益方案？</p>
+            </section>
+            <ul data-index="1" class="answer-list">
+                <li data-selected="A">
+                    <span>A.</span>
+                    <p></p>
+                </li>
+                <li data-selected="B">
+                    <span>B.</span>
+                    <p></p>
+                </li>
+                <li data-selected="C">
+                    <span>C.</span>
+                    <p></p>
+                </li>
+            </ul>
+            <section class="next-con">
+                <button data-index="1" class="next"></button>
+            </section>
+        </section>
+    </section>
+    <section class="main response">
+        <section class="response-con">
+            <p class="tips-text">我很欣赏你的<em>公益方案（Approach）</em>，我也投资30w吧，不过可不要骄傲哦……</p>
+        </section>
+        <section class="response-p response-p2">
+            <p>Well Done!</p>
+            <section class="response-p-img"></section>
+            <button class="next"></button>
+        </section>
+    </section>
+    <section class="main topic">
+        <section class="topic-con">
+            <section class="topic-title">
+                <span class="index">3.</span>
+                <p>有了可行的公益方案，你将如何行动呢？</p>
+            </section>
+            <ul data-index="2" class="answer-list">
+                <li data-selected="A">
+                    <span>A.</span>
+                    <p></p>
+                </li>
+                <li data-selected="B">
+                    <span>B.</span>
+                    <p></p>
+                </li>
+                <li data-selected="C">
+                    <span>C.</span>
+                    <p></p>
+                </li>
+            </ul>
+            <section class="next-con">
+                <button data-index="2" class="next"></button>
+            </section>
+        </section>
+    </section>
+    <section class="main response">
+        <section class="response-con">
+            <p class="tips-text">我们很喜欢你这种长远的<em>公益转化（Action）</em>，我们也投入50w，一起加油吧……</p>
+        </section>
+        <section class="response-p response-p3">
+            <p>Excellent!</p>
+            <section class="response-p-img"></section>
+            <button class="next"></button>
+        </section>
+    </section>
+    <section class="main summary">
+        <section class="summary-con">
+            <img src="img/student.png" width="70" height=69>
+            <section class="star-level">
+                <span class="star"><span class="star-gain"></span></span>
+                <span class="star"><span class="star-gain"></span></span>
+                <span class="star"><span class="star-gain"></span></span>
+                <span class="star"><span class="star-gain"></span></span>
+                <span class="star"><span></span></span>
+            </section>
+            <p>恭喜你！经过三位投资家测评，</p>
+            <p>你的<em>3A</em> 指数为:<em id="score">75</em></p>
+            <ul class="summary-list">
+                <li>
+                    <div class="summary-list-img"><img src="img/response-p1.png"></div>
+                    <p>Aim——以关注社会发展和解决社会问题为出发点、具备社会理想的内在驱动力</p>
+                </li>
+                <li>
+                    <div class="summary-list-img"><img src="img/response-p2.png"></div>
+                    <p>Approach——创新性解决方案和可持续的模式</p>
+                </li>
+                <li>
+                    <div class="summary-list-img"><img src="img/response-p3.png"></div>
+                    <p>Action——有效的行动力和市场转化力</p>
+                </li>
+            </ul>
+            <p class="summary-text">我们觉得你的公益项目具备了Aim、Approach和Action这三种最重要的潜力……如果你继续努力，十年之后一定会在公益领域有一番作为的，加油！</p>
+            <button id="zoom" class="zoom"></button>
+            <p class="zoom-tips">点击你自己的放大镜，开启新的公益挑战！</p>
+        </section>
+        <section id="mask-layer" class="mask-layer">
+            <div class="share-panel">
+                <a href="#" id="share-btn" class="share-btn"></a>
+                <p>点击分享<br>为公益出一份力</p>
+            </div>
+            <h3>3A</h3>
+            <h4>社会企业大发现</h4>
+            <img src="img/you-change.jpg" width="80" height="90">
+            <p>更多参与，敬请关注：</p>
+            <p class="fund"><a href="http://www.youcheng.org/">友成基金会</a></p>
+        </section>
+    </section>
+    <script src="js/touch.js"></script>
+    <script>
+        var ANSWER_LIST = {
+            "A": {
+                "answers": [
+                    "对辍学学生进行一对一的结对资助以帮助他们恢复学业",
+                    "请专业人士对学生家长进行教育知识的普及使其更加重视子女教育",
+                    "通过网络等多媒体建设使学生能够享受到名校教育资源"
+                ],
+                "A": {
+                    "answers": [
+                        "自己出钱对辍学学生进行一对一的结对资助",
+                        "发动周围更多地公益人士参与一对一的结对资助",
+                        "寻求公益基金会或其他相关组织的帮助"
+                    ] 
+                },
+                "B": {
+                    "answers": [
+                        "自己出钱聘请专业人士对家长进行教育知识普及",
+                        "发动周围更多地公益人士参与，采用众筹的资助形式",
+                        "寻求公益基金会或其他相关组织的帮助"
+                    ]
+                },
+                "C": {
+                    "answers": [
+                        "自己出钱进行网络设施等多媒体设备的投入",
+                        "发动周围更多地公益人士共同进行网络资源投入",
+                        "联合一流学校与公益基金会共同参与项目实施"
+                    ]
+                }
+            },
+            "B": {
+                "answers": [
+                    "通过实业投资推动废物再利用产业",
+                    "将互动游戏与沙漠绿化结合，玩到某一环节相关组织就会在沙漠植一棵树",
+                    "通过一系列活动的举办大力倡导绿色出行以减少碳排放"
+                ],
+                "A": {
+                    "answers": [
+                        "自己出钱进行废物再利用技术的研发，开发可商业化的新产品",
+                        "采用众筹的方式发动身边更多的人参与废物再利用的商业化项目",
+                        "联合科研机构、相关企业和公益基金会共同参与项目开发"
+                    ] 
+                },
+                "B": {
+                    "answers": [
+                        "自己出钱进行游戏开发，并出资在沙漠植树",
+                        "发动周围更多的公益人士共同参与项目的实施",
+                        "联合相关游戏开发公司、社会公益企业和公益基金会共同推动项目进展"
+                    ]
+                },
+                "C": {
+                    "answers": [
+                        "凭借自己的力量策划举办活动倡导绿色出行",
+                        "发动身边更多的人参与和宣传，扩大活动影响力",
+                        "联合相关企业和公益基金会共同参与项目实施"
+                    ]
+                }
+            },
+            "C": {
+                "answers": [
+                    "对当地的贫困人群进行资助",
+                    "将当地具有民族特色的手工艺产品进行商业化生产",
+                    "对当地丰富的自然资源进行开发，以带动当地经济发展"
+                ],
+                "A": {
+                    "answers": [
+                        "自己出钱对当地贫困人群进行资助",
+                        "发动周围更多地公益人士参与这个资助项目",
+                        "寻求相关企业、公益基金会或其他相关组织的帮助"
+                    ] 
+                },
+                "B": {
+                    "answers": [
+                        "凭借自己的力量组织当地人进行民族特色手工艺品的生产并开拓销售渠道",
+                        "采用众筹的方式发动身边更多的人参与民族特色手工艺品的项目实施",
+                        "寻求相关企业、公益基金会或其他相关组织的参与协作"
+                    ]
+                },
+                "C": {
+                    "answers": [
+                        "自己出钱建厂对当地自然资源进行开发",
+                        "采用众筹的方式发动身边更多的人共同出资对当地自然资源进行开发",
+                        "寻求相关企业、公益基金会或其他相关组织的参与协作"
+                    ]
+                }
+            }
+            
+        }
+        function g(id) {
+            return document.getElementById(id);
+        }
+        function showById(id) {
+            g(id).style.display = 'block';
+        }
+
+        function hideById(id) {
+            g(id).style.display = 'none';
+        }
+        var frames = document.querySelectorAll('.main');
+        var curFrame = 0;
+        var results = [];
+
+        function showNextFrame() {
+            if (curFrame+1 < frames.length) {
+                frames[curFrame].style.display = 'none';
+                frames[++curFrame].style.display = 'block';
+                if($(frames[curFrame]).hasClass('topic')) {
+                    if (results.length == 1) {
+                        $(frames[curFrame]).find('.answer-list p').each(function (i, v) {
+                            $(v).html(ANSWER_LIST[results[0]].answers[i]);
+                        });
+                    } else if (results.length == 2) {
+                        $(frames[curFrame]).find('.answer-list p').each(function (i, v) {
+                            $(v).html(ANSWER_LIST[results[0]][results[1]].answers[i]);
+                        });
+                    }
+                    setTimeout(function(){
+                        var _lis = frames[curFrame].querySelectorAll('.answer-list li');
+                        for(var i=0; i<_lis.length; i++) {
+                            $(_lis[i]).addClass('slide-in');
+                        }
+                    }, 0);
+                } else if($(frames[curFrame]).hasClass('summary')) {
+                    var _score = 50 + Math.floor(45*Math.random());
+                    $(frames[curFrame]).find('#score').html(_score);
+
+                    var $star = $(frames[curFrame]).find('.star-gain');
+                    var index = 0;
+                    function zoomIn() {
+                        if (index < $star.length) {
+                            $star.eq(index++).addClass('star-zoomin');
+                            setTimeout(zoomIn, 500);
+                        }
+                    }
+                    setTimeout(zoomIn, 0);
+                } else {
+                    setTimeout(function(){
+                        $(frames[curFrame]).find('.response-p-img').addClass('img-slide-in')
+                        $(frames[curFrame]).find('.next').css('visibility', 'visible').animate({opacity:"1"}, 'ease-out');
+                    },0);
+                }
+            }
+        }
+        function bingEvent(elements, eventName, callback) {
+            if (!elements instanceof Array) {
+                elements = [elements];
+            }
+            for (var i = 0; i< elements.length; i++) {
+                elements[i].addEventListener(eventName, callback);
+            }
+        }
+
+        var role = null;
+        g('role-select').addEventListener('click', function (e) {
+            if (e.target.tagName.toLowerCase() == 'button') {
+                $('#role-select .fade-in').removeClass('fade-in');
+                $('#role-select .selected').removeClass('selected');
+                $('#'+e.target.id+'-tips').addClass('fade-in');
+                $(e.target).addClass('selected');
+                role = e.target.id;
+                $('#go').css('visibility', 'visible').animate({opacity:"1"}, 'ease-out');
+            }
+        });
+
+        g('go').addEventListener('click', function (e) {
+                showNextFrame();
+        });
+
+        bingEvent(document.querySelectorAll('.answer-list p'), 'click', function (e) {
+            var _li = e.target.parentNode;
+            if(_li.tagName.toLowerCase() == 'li') {
+                var _ul = _li.parentNode;
+                $(_ul).find('.selected').removeClass('selected');
+                $(_li).addClass('selected');
+                results[_ul.getAttribute('data-index')] = _li.getAttribute('data-selected');
+                $(_ul).next().find('.next').css('visibility', 'visible').animate({opacity:"1"}, 'ease-out');
+            }
+        });
+
+        bingEvent(document.querySelectorAll('.topic .next'), 'click', function (e) {
+            var index = e.target.getAttribute('data-index');
+            if (!results[index]) {
+                alert('请先选择答案！');
+            } else {
+                showNextFrame();
+            }
+        });
+        bingEvent(document.querySelectorAll('.response .next'), 'click', function (e) {
+            showNextFrame();
+        });
+
+        document.getElementById('zoom').addEventListener('click', function (e) {
+            $('#mask-layer').show().animate({top:0, opacity: 0.85}, 'ease-out')
+        });
+
+        //share-btn event
+        document.getElementById('share-btn').addEventListener('click', function (e) {
+            e.preventDefault();
+            alert('share');
+        });
+    </script>
+</body>
+<script>
+var dataForWeixin={
+    appId:"",
+	MsgImg:"http://nowstc.com/youcheng/sharelogo/suoluetu.jpg",
+	TLImg:"http://nowstc.com/youcheng/sharelogo/suoluetu.jpg",
+    	url:"http://nowstc.com/youcheng/",
+	title:"公益总动员",
+	desc:"给你一笔钱，你要怎么做公益？加入公益总动员，测测你的社会企业家潜力！",
+	fakeid:"",
+	callback:function(){}
+};
+(function(){
+	var onBridgeReady=function(){
+        WeixinJSBridge.on('menu:share:appmessage', function(argv){
+            WeixinJSBridge.invoke('sendAppMessage',{
+                "appid":dataForWeixin.appId,
+                    "img_url":dataForWeixin.MsgImg,
+                    "img_width":"120",
+                    "img_height":"120",
+                    "link":dataForWeixin.url,
+                    "desc":dataForWeixin.desc,
+                    "title":dataForWeixin.title
+            }, function(res){(dataForWeixin.callback)();});
+        });
+        WeixinJSBridge.on('menu:share:timeline', function(argv){
+            (dataForWeixin.callback)();
+            WeixinJSBridge.invoke('shareTimeline',{
+                "img_url":dataForWeixin.TLImg,
+                    "img_width":"120",
+                    "img_height":"120",
+                    "link":dataForWeixin.url,
+                    "desc":dataForWeixin.desc,
+                    "title":dataForWeixin.title
+            }, function(res){});
+        });
+        WeixinJSBridge.on('menu:share:weibo', function(argv){
+            WeixinJSBridge.invoke('shareWeibo',{
+                "content":dataForWeixin.title,
+                    "url":dataForWeixin.url
+            }, function(res){(dataForWeixin.callback)();});
+        });
+        WeixinJSBridge.on('menu:shareacebook', function(argv){
+            (dataForWeixin.callback)();
+            WeixinJSBridge.invoke('shareFB',{
+                "img_url":dataForWeixin.TLImg,
+                    "img_width":"120",
+                    "img_height":"120",
+                    "link":dataForWeixin.url,
+                    "desc":dataForWeixin.desc,
+                    "title":dataForWeixin.title
+            }, function(res){});
+        });
+    };
+    if(document.addEventListener){
+        document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+    }else if(document.attachEvent){
+        document.attachEvent('WeixinJSBridgeReady'   , onBridgeReady);
+        document.attachEvent('onWeixinJSBridgeReady' , onBridgeReady);
+    }
+})();
+
+window.onload=function(){
+	var $firstPage = $("#arrow_firstPage");
+	var $down = $("#arrow_down");
+	var $up = $("#arrow_up");
+	setInterval(function(){
+		$firstPage
+			.animate({"bottom":"20%"},500)
+			.animate({"bottom":"14.97%"},500);
+	},1000);
+	setInterval(function(){
+		$down
+			.animate({"top":"40px"},500)
+			.animate({"top":"0px"},500);
+	},1000);
+	setInterval(function(){
+		$up
+			.animate({"bottom":"40px"},500)
+			.animate({"bottom":"0px"},500);
+	},1000);
+}
+
+</script>
+<script src="//track.timepearls.com/js_tracker.min.js"></script>
+</html>

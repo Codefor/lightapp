@@ -1,0 +1,85 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<meta content="email=no" name="format-detection">
+<meta content="yuebin" name="author">
+<title>沙龙精选</title>
+<style type="text/css">
+	/* 浏览器重置样式 [[*/
+	body,p,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,form,fieldset,legend,input,select,textarea,button,th,td,menu{margin:0;padding:0;}
+	article,aside,dialog,figure,footer,header,hgroup,nav,section{display:block;}
+	h1,h2,h3,h4,h5,h6,input,textarea,select,button,label{font-size:100%;font-weight:100;}
+	input,textarea,select,button,label{vertical-align:middle;}
+	img,fieldset,input[type="submit"]{border:none;}
+	input{outline:none;background:transparent;vertical-align:top;}
+	input::-ms-clear{display:none;}
+	table{border-collapse:collapse;border-spacing:0;}        
+	button{cursor:pointer;border:none;}
+	textarea{word-wrap:break-word;resize:none;-webkit-box-shadow:none;}
+	input,textarea,select{-webkit-appearance:none;outline:none;}
+	input:-moz-placeholder{color:#C4C4C4;}
+	::-webkit-input-placeholder{color:#C4C4C4;}
+	select::-ms-expand{display:none;}
+	::-ms-check{display:none;}
+	body{font-family:"Microsoft YaHei";-webkit-user-select:none;-khtml-user-select:none;-ms-user-select:none;user-select:none;-webkit-text-size-adjust:none;-webkit-tap-highlight-color:rgba(0,0,0,0.4);overflow:hidden;font-size:1em;line-height:1em;background:#1C1F26;}
+	body,html{height:100%;}
+	a{text-decoration:none;color:#333333;-webkit-touch-callout:none;}
+	a:hover{background-color:;}
+	a,button,input{-webkit-touch-callout:none;}
+	/* 浏览器重置样式 ]]*/
+
+	body{height:100%;background-color:#fff;}
+	.transparent{opacity:0;}
+	#page1{position:relative;max-width:455px;height:100%;margin:0 auto;overflow:hidden;background:url(img/page1.jpg) no-repeat center top;background-size:100%;}
+	#gift{width:135px;height:41px;background:url(img/bt1.png);margin:360px 50% 0;background-size:100% 100%;position:relative;left:-67px;border-radius:26px;}
+	#page2{display:none;position:absolute;top:0;left:0;width:100%;height:100%;overflow:hidden;background:url(img/page2.png) no-repeat center top;background-size:100%;}
+	#share{width:232px;height:44px;background:url(img/bt2.png);background-size:100% 100%;margin:360px 50% 0;position:relative;left:-116px;border-radius:17px;}
+	.fade-in{transition:all 1000ms;-webkit-transition: all 1000ms;opacity: 1;}
+
+</style>
+</head>
+<body>
+	<section class="transparent" id="page1">
+		<button id="gift"></button>
+		<section class="transparent" id="page2">
+			<button id="share"></button>
+		</section>
+	</section>
+	<script>
+		var page1 = document.getElementById('page1');
+		var page2 = document.getElementById('page2');
+		var btnGift = document.getElementById('gift');
+		var btnShare = document.getElementById('share');
+		function adaption() {
+			var _width = page1.offsetWidth || page1.clientWidth;
+			page1.style.height = _width*1.4+'px';
+			btnGift.style.marginTop = _width*1.125+'px';
+			btnShare.style.marginTop = _width*1.125+'px';
+		};
+		adaption();
+
+		window.onload = function () {
+			page1.className = 'fade-in';
+		}
+
+		window.onorientationchange = adaption;
+
+		btnGift.onclick = function () {
+			page2.style.display = 'block';
+			setTimeout(function () {page2.className = 'fade-in';}, 0)
+		};
+
+		btnShare.onclick = function () {
+			alert('share');
+		};
+	</script>
+    <script src="//libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+    <script src="//track.timepearls.com/js_tracker.min.js"></script>
+</body>
+</html>
