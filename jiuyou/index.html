@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+<meta content="no" name="apple-mobile-web-app-capable">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<meta content="email=no" name="format-detection">
+<meta content="yuebin" name="author">
+<title>UC九游“新游期待榜”交流分享会</title>
+<style type="text/css">
+	/* 浏览器重置样式 [[*/
+	body,p,ul,ol,li,dl,dt,dd,h1,h2,h3,h4,h5,h6,form,fieldset,legend,input,select,textarea,button,th,td,menu{margin:0;padding:0;}
+	article,aside,dialog,figure,footer,header,hgroup,nav,section{display:block;}
+	h1,h2,h3,h4,h5,h6,input,textarea,select,button,label{font-size:100%;font-weight:100;}
+	input,textarea,select,button,label{vertical-align:middle;}
+	img,fieldset,input[type="submit"]{border:none;}
+	input{outline:none;background:transparent;vertical-align:top;}
+	input::-ms-clear{display:none;}
+	table{border-collapse:collapse;border-spacing:0;}        
+	button{cursor:pointer;border:none;}
+	textarea{word-wrap:break-word;resize:none;-webkit-box-shadow:none;}
+	input,textarea,select{-webkit-appearance:none;outline:none;}
+	input:-moz-placeholder{color:#C4C4C4;}
+	::-webkit-input-placeholder{color:#C4C4C4;}
+	select::-ms-expand{display:none;}
+	::-ms-check{display:none;}
+	body{font-family:"Microsoft YaHei";-webkit-user-select:none;-khtml-user-select:none;-ms-user-select:none;user-select:none;-webkit-text-size-adjust:none;-webkit-tap-highlight-color:rgba(0,0,0,0.4);overflow:hidden;font-size:1em;line-height:1em;background:#1C1F26;}
+	body,html{height:100%;}
+	a{text-decoration:none;color:#333333;-webkit-touch-callout:none;}
+	a:hover{background-color:;}
+	a,button,input{-webkit-touch-callout:none;}
+	/* 浏览器重置样式 ]]*/
+	html,body{width:100%;height:100%;background-color:#fff;overflow:hidden;}
+	
+	.container{position:relative;width:100%;height:800%;top:0;-webkit-transform: translateZ(0);}
+	.page{position:relative;width:100%;height:12.5%;background: url(img/1.jpg) no-repeat center center;-webkit-background-size: 100% 100%;text-align:center;vertical-align: middle;}
+	.page-bg{position: absolute;top: 0;left: 0;width: 100%;height: 100%;background: url(img/001.jpg) no-repeat center 20%;-webkit-background-size: 100% auto;opacity: 0;-webkit-transform: translateZ(0);}
+	.page-2,.page-3,.page-4,.page-5,.page-6{background: none;}
+	.page-2 .page-bg{background-image: url(img/001.jpg);-webkit-transform: translateY(-20%);}
+	.page-3 .page-bg{background-image: url(img/002.jpg);}
+	.page-4 .page-bg{background-image: url(img/003.jpg)}
+	.page-5 .page-bg{background-image: url(img/004.jpg);-webkit-transform: translateY(20%);}
+	.page-6 .page-bg{background-image: url(img/005.jpg)}
+	.page-1 .img-con{position:absolute;width: 100%;top:37%;}
+	.page-1 img{position:relative;max-width: 100%;}
+	.page-1 .logo{max-width:0;max-height:0;margin-top:12.5%;/*max-width:50%;max-height:15%;*/}
+	.page-1 .title{left: -100%}
+	.page .text{position: absolute;top: 7%;left: 7%;}
+	.page .text strong{display: inline-block;width: 123px;height: 62.5px;background: url(img/qidai.png) no-repeat;-webkit-background-size: 100% 100%;opacity: 0;}
+	.page .text span{display: inline-block;width:91px;height:31.5px;background: url(img/1xiwang.png) no-repeat;-webkit-background-size: 100% 100%;opacity: 0;vertical-align: 17px;margin-left: -35px;}
+	.page-3 .text span{background-image: url(img/2dongli.png);}
+	.page-4 .text span{background-image: url(img/3jianchi.png);}
+	.page-5 .text span{background-image: url(img/4jingxi.png);}
+	.page-6 .text span{background-image: url(img/5renqi.png);}
+	.page-7{background-image: url(img/2.jpg)}
+	.page-8{background-image: url(img/3.png)}
+	.page-7 .location{position:absolute;width:20%;padding-bottom:19%;top:39%;-webkit-transform:translateY(-50px);-webkit-transform: translateZ(0);left:41%;background: url(img/location.png) no-repeat;-webkit-background-size: 100% 100%;opacity: 0;}
+	#audio-btn{position: absolute;width: 35px;height: 35px;top: 30px;right: 25px;z-index: 10;background: url(img/audio.png) no-repeat;-webkit-background-size: 200% 100%;-webkit-animation: reverseRotataZ 1.2s linear infinite;}
+	#audio-btn.paused{background-position: -35px 0;-webkit-animation: none;}
+	@-webkit-keyframes reverseRotataZ{
+	    0%{-webkit-transform: rotateZ(0deg);}
+	    100%{-webkit-transform: rotateZ(-360deg);}
+	}
+	.icon-up{
+		position: absolute;
+		width: 24.5px;
+		height: 13.5px;
+		display: none;
+		left: 50%;
+		bottom: 30px;
+		z-index: 10;
+		margin-left: -12px;
+		background: url(img/ts_1.png) no-repeat;
+		-webkit-background-size: 100% 100%;
+		-webkit-animation: shadowfadeIn 2s infinite;
+	}
+	@-webkit-keyframes shadowfadeIn{
+		0%{
+			opacity: 0;
+		}
+	    100%{
+	    	opacity: 1;
+	        -webkit-transform: scale3d(1.6, 1.6, 1.6);
+	    }
+	}
+</style>
+</head>
+<body>
+	<span id="audio-btn"></span>
+	<span class="icon-up"></span>
+	<section class="container" id="container">
+		<section class="page page-1">
+			<section class="img-con">
+				<img src="img/wenzi1.jpg" alt="发掘“期待”的力量" class="title" />
+				<img src="img/logo.jpg" alt="九游" class="logo" />
+			</section>
+		</section>
+		<section class="page page-2">
+			<div class="page-bg"></div>
+			<div class="text"><strong></strong><span></span></div>
+		</section>
+		<section class="page page-3">
+			<div class="page-bg"></div>
+			<div class="text"><strong></strong><span></span></div>
+		</section>
+		<section class="page page-4">
+			<div class="page-bg"></div>
+			<div class="text"><strong></strong><span></span></div>
+		</section>
+		<section class="page page-5">
+			<div class="page-bg"></div>
+			<div class="text"><strong></strong><span></span></div>
+		</section>
+		<section class="page page-6">
+			<div class="page-bg"></div>
+			<div class="text"><strong></strong><span></span></div>
+		</section>
+		<section class="page page-7">
+			<div class="location"></div>
+		</section>
+		<section class="page page-8">
+			
+		</section>
+	</section>
+	<audio id="music-player" src="bg3.mp3" autoplay loop></audio>  
+	<script src="http://libs.baidu.com/zepto/0.8/zepto.min.js"></script>
+	<script>
+		var audio = document.getElementById('music-player');
+		var $iconUp = $('.icon-up');
+		var pageIndex = 0;
+		var $container = $('#container');
+		var $pages = $('.page');
+		var animationTime = 800;
+		var animationTime_l = 1000;
+		var animationTime_s = 500;
+		var pageFlag = false;
+		var pageAnimation = [
+			function() {
+				$pages.eq(1).find('strong').animate({opacity: 1}, animationTime_l, 'ease-out', function() {
+					$pages.eq(1).find('span').animate({opacity:1}, animationTime_l, 'ease-out', function() {
+						$pages.eq(1).find('.page-bg').animate({'-webkit-transform': 'none', opacity: 1}, 
+                          	animationTime, 'linear', function() {
+                          		pageAnimationReset[1]();
+								pageFlag = true;
+								$iconUp.show();
+							});
+					});
+				});
+			},
+			function() {
+				$pages.eq(2).find('strong').animate({opacity: 1}, animationTime_l, 'ease-out', function() {
+					$pages.eq(2).find('span').animate({opacity: 1}, animationTime_l, 'ease-out', function() {
+						$pages.eq(2).find('.page-bg').animate({'-webkit-transform': 'scale(1.1)', opacity: 1},
+                          	animationTime, 'ease-out', function() {
+                          		pageAnimationReset[0]();
+                          		pageAnimationReset[2]();
+								pageFlag = true;
+								$iconUp.show();
+							});
+					});
+				});
+			},
+			function() {
+				$pages.eq(3).find('strong').animate({opacity: 1}, animationTime_l, 'ease-out', function() {
+					$pages.eq(3).find('span').animate({opacity: 1}, animationTime_l, 'ease-out', function() {
+						$pages.eq(3).find('.page-bg').animate({'-webkit-transform': 'scale(1.1)', opacity: 1}, 
+                          	animationTime, 'ease-out', function() {
+                          		pageAnimationReset[1]();
+                          		pageAnimationReset[3]();
+								pageFlag = true;
+								$iconUp.show();
+							});
+					});
+				});
+			},
+			function() {
+				$pages.eq(4).find('strong').animate({opacity: 1}, animationTime_l, 'ease-out', function() {
+					$pages.eq(4).find('span').animate({opacity: 1}, animationTime_l, 'ease-out', function() {
+						$pages.eq(4).find('.page-bg').animate({'-webkit-transform': 'none', opacity: 1},
+							animationTime_s, 'linear', function() {
+								pageAnimationReset[2]();
+                          		pageAnimationReset[4]();
+								pageFlag = true;
+								$iconUp.show();
+							});
+					});
+				});
+			},
+			function() {
+				$pages.eq(5).find('strong').animate({opacity: 1}, animationTime_l, 'ease-out', function() {
+					$pages.eq(5).find('span').animate({opacity: 1}, animationTime_l, 'ease-out', function() {
+						$pages.eq(5).find('.page-bg').animate({opacity: 1}, 
+                          	animationTime, 'linear', function() {
+	                          	pageAnimationReset[3]();
+	                      		pageAnimationReset[5]();
+								pageFlag = true;
+								$iconUp.show();
+							});
+					});
+				});
+			},
+			function() {
+				$pages.eq(6).find('.location').animate({'-webkit-transform': 'none', opacity: 1},
+                   	animationTime, 'linear', function() {
+                   		pageAnimationReset[4]();
+						pageFlag = true;
+						$iconUp.show();
+					});
+			}
+		];
+		var pageAnimationReset = [
+			function() {
+				$pages.eq(1).find('strong, span').css({opacity: 0});
+				$pages.eq(1).find('.page-bg').css({'-webkit-transform': 'translateY(-20%)', opacity: 0});
+			},
+			function() {
+				$pages.eq(2).find('strong, span').css({opacity: 0});
+				$pages.eq(2).find('.page-bg').css({'-webkit-transform': 'none', opacity: 0});
+			},
+			function() {
+				$pages.eq(3).find('strong, span').css({opacity: 0});
+				$pages.eq(3).find('.page-bg').css({'-webkit-transform': 'none', opacity: 0});
+			},
+			function() {
+				$pages.eq(4).find('strong, span').css({opacity: 0});
+				$pages.eq(4).find('.page-bg').css({'-webkit-transform': 'translateY(20%)', opacity: 0});
+			},
+			function() {
+				$pages.eq(5).find('strong, span, .page-bg').css({opacity: 0});
+			},
+			function() {
+				$pages.eq(6).find('.location').css({'-webkit-transform': 'translateY(-50px)', opacity: 0});
+			},
+		];
+
+		$(document).on('swipeUp', '*', function (e) {
+			if (pageIndex > -6 && pageFlag) {
+				pageFlag = false;
+				$iconUp.hide();
+				$container.animate({'-webkit-transform': 'translateY(' + --pageIndex * (12.5) + '%)'}, animationTime, 'ease-out'
+                   , pageAnimation[-1-pageIndex]);
+			} else if (pageIndex == -6 && pageFlag) {
+				pageFlag = false;
+				$iconUp.hide();
+				$container.animate({'-webkit-transform': 'translateY(' + --pageIndex * (12.5) + '%)'}, animationTime, 'ease-out'
+                   , function(){pageAnimationReset[5]();pageFlag = true;});
+			}
+
+			return false;
+		});
+		$(document).on('swipeDown', '*', function (e) {
+			if (pageIndex < -1 && pageFlag) {
+				pageFlag = false;
+				$iconUp.hide();
+				$container.animate({'-webkit-transform': 'translateY(' + ++pageIndex * (12.5) + '%)'}, animationTime, 'ease-out'
+                   , pageAnimation[-1-pageIndex]);
+			} else if (pageIndex == -1 && pageFlag) {
+				pageFlag = false;
+				$iconUp.hide();
+				$container.animate({'-webkit-transform': 'translateY(' + ++pageIndex * (12.5) + '%)'}, animationTime, 'ease-out'
+                   , function() {pageAnimationReset[0](); pageFlag = true;$iconUp.show();});
+			}
+			return false;
+		});
+		$(document).on('touchstart touchmove touchend', '*', function(e) {
+			return false;
+		});
+
+		$(document).on('tap', '#audio-btn', function(e) {
+			if (audio.paused) {
+				audio.play();
+				$(this).removeClass('paused');
+			} else {
+				audio.pause();
+				$(this).addClass('paused');
+			}
+			return false;
+		});
+
+		$(function() {
+			$pages.eq(0).find('.title').animate({left:0}, animationTime_s, 'ease-out', function() {
+					$pages.eq(0).find('.logo').animate({maxWidth: '50%', maxHeight: '15%', marginTop: '5%'}, animationTime_s, 'ease-out', function() {pageFlag = true;$iconUp.show();});
+				});
+		});
+	</script>
+
+<script>
+var dataForWeixin={
+    appId:  "",
+    img:    "http://yuebin.jd-app.com/jiuyou/img/logo.jpg", 
+    url:    "http://yuebin.jd-app.com/jiuyou/",
+    title:  "UC九游“新游期待榜”交流分享会",
+    desc:   "发掘“期待”的力量，分享“期待”的价值，UC九游与你相约广州",
+    fakeid: ""
+};
+(function(){
+    var onBridgeReady=function(){
+        // 发送给好友; 
+        WeixinJSBridge.on('menu:share:appmessage', function(argv){
+            WeixinJSBridge.invoke('sendAppMessage',{
+                "appid":        dataForWeixin.appId,
+                "img_url":      dataForWeixin.img,
+                "img_width":    "120",
+                "img_height":   "120",
+                "link":             dataForWeixin.url,
+                "desc":             dataForWeixin.desc,
+                "title":            dataForWeixin.title
+            }, function(res){});
+        });
+        // 分享到朋友圈;
+        WeixinJSBridge.on('menu:share:timeline', function(argv){
+            WeixinJSBridge.invoke('shareTimeline',{
+            "img_url":dataForWeixin.img,
+            "img_width":"120",
+            "img_height":"120",
+            "link":dataForWeixin.url,
+            "desc":dataForWeixin.desc,
+            "title":dataForWeixin.title
+            }, function(res){});
+        });
+        // 分享到微博;
+        WeixinJSBridge.on('menu:share:weibo', function(argv){
+            WeixinJSBridge.invoke('shareWeibo',{
+            "content":dataForWeixin.title+' '+dataForWeixin.url,
+            "url":dataForWeixin.url
+            }, function(res){});
+        });
+    };
+    if(document.addEventListener){
+        document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+    }else if(document.attachEvent){
+        document.attachEvent('WeixinJSBridgeReady'   , onBridgeReady);
+        document.attachEvent('onWeixinJSBridgeReady' , onBridgeReady);
+    }
+})();
+</script>
+</body>
+</html>
