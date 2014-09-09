@@ -34,9 +34,9 @@
 	/* 浏览器重置样式 ]]*/
 	html,body{width:100%;height:100%;background-color:#fff;overflow:hidden;}
 	
-	.container{position:relative;width:100%;height:800%;top:0;-webkit-transform: translateZ(0);}
-	.page{position:relative;width:100%;height:12.5%;background: url(img/1.jpg) no-repeat center center;-webkit-background-size: 100% 100%;text-align:center;vertical-align: middle;}
-	.page-bg{position: absolute;top: 0;left: 0;width: 100%;height: 100%;background: url(img/001.jpg) no-repeat center 20%;-webkit-background-size: 100% auto;opacity: 0;-webkit-transform: translateZ(0);}
+	.container{position:relative;width:100%;height:800%;top:0;}
+	.page{position:relative;width:100%;height:12.5%;background: url(img/1.jpg) no-repeat center center;background-size: 100% 100%;text-align:center;vertical-align: middle;overflow: hidden;}
+	.page-bg{position: absolute;top: 0;left: 0;width: 100%;height: 100%;background: url(img/001.jpg) no-repeat center 20%;background-size: 100% auto;opacity: 0;}
 	.page-2,.page-3,.page-4,.page-5,.page-6{background: none;}
 	.page-2 .page-bg{background-image: url(img/001.jpg);-webkit-transform: translateY(-20%);}
 	.page-3 .page-bg{background-image: url(img/002.jpg);}
@@ -48,16 +48,16 @@
 	.page-1 .logo{max-width:0;max-height:0;margin-top:12.5%;/*max-width:50%;max-height:15%;*/}
 	.page-1 .title{left: -100%}
 	.page .text{position: absolute;top: 7%;left: 7%;}
-	.page .text strong{display: inline-block;width: 123px;height: 62.5px;background: url(img/qidai.png) no-repeat;-webkit-background-size: 100% 100%;opacity: 0;}
-	.page .text span{display: inline-block;width:91px;height:31.5px;background: url(img/1xiwang.png) no-repeat;-webkit-background-size: 100% 100%;opacity: 0;vertical-align: 17px;margin-left: -35px;}
+	.page .text strong{position:absolute;top:0;left:0;width: 123px;height: 62.5px;background: url(img/qidai.png) no-repeat;background-size: 100% 100%;opacity: 0;}
+	.page .text span{position:absolute;top:14px;left:90px;width:91px;height:31.5px;background: url(img/1xiwang.png) no-repeat;background-size: 100% 100%;opacity: 0;}
 	.page-3 .text span{background-image: url(img/2dongli.png);}
 	.page-4 .text span{background-image: url(img/3jianchi.png);}
 	.page-5 .text span{background-image: url(img/4jingxi.png);}
 	.page-6 .text span{background-image: url(img/5renqi.png);}
 	.page-7{background-image: url(img/2.jpg)}
 	.page-8{background-image: url(img/3.png)}
-	.page-7 .location{position:absolute;width:20%;padding-bottom:19%;top:39%;-webkit-transform:translateY(-50px);-webkit-transform: translateZ(0);left:41%;background: url(img/location.png) no-repeat;-webkit-background-size: 100% 100%;opacity: 0;}
-	#audio-btn{position: absolute;width: 35px;height: 35px;top: 30px;right: 25px;z-index: 10;background: url(img/audio.png) no-repeat;-webkit-background-size: 200% 100%;-webkit-animation: reverseRotataZ 1.2s linear infinite;}
+	.page-7 .location{position:absolute;width:20%;padding-bottom:19%;top:39%;-webkit-transform:translateY(-50px);left:41%;background: url(img/location.png) no-repeat;background-size: 100% 100%;opacity: 0;}
+	#audio-btn{position: absolute;width: 35px;height: 35px;top: 30px;right: 25px;z-index: 10;background: url(img/audio.png) no-repeat;background-size: 200% 100%;-webkit-animation: reverseRotataZ 1.2s linear infinite;}
 	#audio-btn.paused{background-position: -35px 0;-webkit-animation: none;}
 	@-webkit-keyframes reverseRotataZ{
 	    0%{-webkit-transform: rotateZ(0deg);}
@@ -73,7 +73,7 @@
 		z-index: 10;
 		margin-left: -12px;
 		background: url(img/ts_1.png) no-repeat;
-		-webkit-background-size: 100% 100%;
+		background-size: 100% 100%;
 		-webkit-animation: shadowfadeIn 2s infinite;
 	}
 	@-webkit-keyframes shadowfadeIn{
@@ -88,7 +88,7 @@
 </style>
 </head>
 <body>
-	<span id="audio-btn"></span>
+	<span id="audio-btn" style="display:none;"></span>
 	<span class="icon-up"></span>
 	<section class="container" id="container">
 		<section class="page page-1">
@@ -124,7 +124,7 @@
 			
 		</section>
 	</section>
-	<audio id="music-player" src="bg3.mp3" autoplay loop></audio>  
+	<audio id="music-player" src="./bg3.mp3" autoplay="autoplay" loop="loop"></audio>  
 	<script src="http://libs.baidu.com/zepto/0.8/zepto.min.js"></script>
 	<script>
 		var audio = document.getElementById('music-player');
@@ -141,7 +141,7 @@
 				$pages.eq(1).find('strong').animate({opacity: 1}, animationTime_l, 'ease-out', function() {
 					$pages.eq(1).find('span').animate({opacity:1}, animationTime_l, 'ease-out', function() {
 						$pages.eq(1).find('.page-bg').animate({'-webkit-transform': 'none', opacity: 1}, 
-                          	animationTime, 'linear', function() {
+                          	animationTime_s, 'linear', function() {
                           		pageAnimationReset[1]();
 								pageFlag = true;
 								$iconUp.show();
@@ -153,7 +153,7 @@
 				$pages.eq(2).find('strong').animate({opacity: 1}, animationTime_l, 'ease-out', function() {
 					$pages.eq(2).find('span').animate({opacity: 1}, animationTime_l, 'ease-out', function() {
 						$pages.eq(2).find('.page-bg').animate({'-webkit-transform': 'scale(1.1)', opacity: 1},
-                          	animationTime, 'ease-out', function() {
+                          	animationTime_s, 'ease-out', function() {
                           		pageAnimationReset[0]();
                           		pageAnimationReset[2]();
 								pageFlag = true;
@@ -166,7 +166,7 @@
 				$pages.eq(3).find('strong').animate({opacity: 1}, animationTime_l, 'ease-out', function() {
 					$pages.eq(3).find('span').animate({opacity: 1}, animationTime_l, 'ease-out', function() {
 						$pages.eq(3).find('.page-bg').animate({'-webkit-transform': 'scale(1.1)', opacity: 1}, 
-                          	animationTime, 'ease-out', function() {
+                          	animationTime_s, 'ease-out', function() {
                           		pageAnimationReset[1]();
                           		pageAnimationReset[3]();
 								pageFlag = true;
@@ -203,7 +203,7 @@
 			},
 			function() {
 				$pages.eq(6).find('.location').animate({'-webkit-transform': 'none', opacity: 1},
-                   	animationTime, 'linear', function() {
+                   	animationTime_s, 'linear', function() {
                    		pageAnimationReset[4]();
 						pageFlag = true;
 						$iconUp.show();
@@ -279,6 +279,11 @@
 			return false;
 		});
 
+		audio.addEventListener('play', function () {
+			// audio.show();
+			$('#audio-btn').show();
+		});
+
 		$(function() {
 			$pages.eq(0).find('.title').animate({left:0}, animationTime_s, 'ease-out', function() {
 					$pages.eq(0).find('.logo').animate({maxWidth: '50%', maxHeight: '15%', marginTop: '5%'}, animationTime_s, 'ease-out', function() {pageFlag = true;$iconUp.show();});
@@ -289,8 +294,8 @@
 <script>
 var dataForWeixin={
     appId:  "",
-    img:    "http://yuebin.jd-app.com/jiuyou/img/logo.jpg", 
-    url:    "http://yuebin.jd-app.com/jiuyou/",
+    img:    "http://demo.timepearls.com/jiuyou/img/thumb.jpg", 
+    url:    "http://demo.timepearls.com/jiuyou/",
     title:  "UC九游“新游期待榜”交流分享会",
     desc:   "发掘“期待”的力量，分享“期待”的价值，UC九游与你相约广州",
     fakeid: ""
