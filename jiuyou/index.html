@@ -88,7 +88,7 @@
 </style>
 </head>
 <body>
-	<span id="audio-btn" style="display:none;"></span>
+	<span id="audio-btn" style="display:none;" controls></span>
 	<span class="icon-up"></span>
 	<section class="container" id="container">
 		<section class="page page-1">
@@ -124,7 +124,9 @@
 			
 		</section>
 	</section>
-	<audio id="music-player" src="./bg3.mp3" autoplay="autoplay" loop="loop"></audio>  
+	<audio id="music-player" autoplay="true" loop="true" style="position:absolute;top:5px;">
+		<source src="bg3.mp3">
+	</audio>
 	<script src="http://libs.baidu.com/zepto/0.8/zepto.min.js"></script>
 	<script>
 		var audio = document.getElementById('music-player');
@@ -247,8 +249,6 @@
 				$container.animate({'-webkit-transform': 'translateY(' + --pageIndex * (12.5) + '%)'}, animationTime, 'ease-out'
                    , function(){pageAnimationReset[5]();pageFlag = true;});
 			}
-
-			return false;
 		});
 		$(document).on('swipeDown', '*', function (e) {
 			if (pageIndex < -1 && pageFlag) {
@@ -262,8 +262,14 @@
 				$container.animate({'-webkit-transform': 'translateY(' + ++pageIndex * (12.5) + '%)'}, animationTime, 'ease-out'
                    , function() {pageAnimationReset[0](); pageFlag = true;$iconUp.show();});
 			}
-			return false;
 		});
+
+		$(document).one('touchstart touchmove touchend', function(e) {
+			if (!$('#audio-btn').hasClass('paused')) {
+				audio.play();
+			}
+		});
+
 		$(document).on('touchstart touchmove touchend', '*', function(e) {
 			return false;
 		});
@@ -280,7 +286,6 @@
 		});
 
 		audio.addEventListener('play', function () {
-			// audio.show();
 			$('#audio-btn').show();
 		});
 
