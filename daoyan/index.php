@@ -371,7 +371,7 @@ function time_delta($passed){
 				success: function(result) {
 					// 可添加result判断
 					var _count = parseInt($(e.target).attr('data-count'))+1;
-					$(e.target).attr('data-count', _count).prop('disabled', true).next('span').text(_count+'人支持');
+					$(e.target).attr('data-count', _count).prop('disabled', true).next('span').text(_count+'人like');
                     setCookie({
 						name: 'support-'+$(e.target).attr('data-id'),
 						value: 'true'
