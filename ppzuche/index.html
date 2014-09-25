@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="format-detection" content="telephone=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<title>PP哥奇思妙想的世界杯大考题</title>
+	<link rel="stylesheet" href="css/css.css" />
+	<script src="js/touch.js"></script>
+	<script src="js/js.js"></script>
+</head>
+<body onload="onBridgeReady()">
+	<div class="load">
+		<img src="images/load.gif">
+		<div class="text">Loading</div>
+	</div>
+	<section>
+		<header>
+			<div class="title"></div>
+			<div class="t"></div>
+			<div class="topic">
+				<div class="topicbox">
+					<div class='topiccon'><span>
+						<div class='introduction'>
+							
+							<h3>PP哥奇思妙想的世界杯大考题</h3>
+							<em>通过微信新注册用户，即可享受首日免单（适用200元以下车型；租用其他车型，可享受首笔订单200元的租金优惠）</em>
+						</div>
+					</span></div>
+				</div>
+			</div>
+		</header>
+		<div class="score">
+			<div class="scores">
+				<em>PP哥正在改卷中...</em>
+				<dfn>5</dfn>
+			</div>
+			<span></span>
+		</div>
+		<div class="con">
+			<div class="go"></div>
+			<div class="index-b"></div>
+			<div class="list"><ul></ul></div>
+			<div class="select y"></div>
+			<div class="select n"></div>
+			<div class="shenma"></div>
+			<div class="title">问PP哥<br />你考了多少分</div>
+			<div class="logo"><img src="images/12.png"></div>
+			<div class="rcode">
+				<div class="int">请告诉你的小伙伴，<br/>
+				要想“首日免单”请关注<br/>
+				PP租车微信［优惠啦］<br/>
+				<br/>
+				</div>
+				<div class="code"><img src="images/share.png"></div>
+			</div>
+		</div>
+	</section>
+<script>
+function onBridgeReady(){
+		   WeixinJSBridge.call('hideToolbar');
+		}
+
+		if (typeof WeixinJSBridge == "undefined"){
+		    if( document.addEventListener ){
+		        document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+		    }else if (document.attachEvent){
+		        document.attachEvent('WeixinJSBridgeReady', onBridgeReady); 
+		        document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+		    }
+		}else{
+		    onBridgeReady();
+		}
+</script>
+</body>
+
+<script>
+var dataForWeixin={
+    appId:"",
+	MsgImg:"http://brand-social.com/lightapp/pp/sharelogo/suoluetu.jpg",
+	TLImg:"http://brand-social.com/lightapp/pp/sharelogo/suoluetu.jpg",
+    	url:"http://brand-social.com/lightapp/pp/index.html",
+	title:"PP哥奇思妙想的世界杯大考题",
+	desc:"世界杯离你太遥远，PP租车首日免单才与你最接近 >>>",
+	fakeid:"",
+	callback:function(){}
+};
+(function(){
+	var onBridgeReady=function(){
+        WeixinJSBridge.on('menu:share:appmessage', function(argv){
+            WeixinJSBridge.invoke('sendAppMessage',{
+                "appid":dataForWeixin.appId,
+                    "img_url":dataForWeixin.MsgImg,
+                    "img_width":"120",
+                    "img_height":"120",
+                    "link":dataForWeixin.url,
+                    "desc":dataForWeixin.desc,
+                    "title":dataForWeixin.title
+            }, function(res){(dataForWeixin.callback)();});
+        });
+        WeixinJSBridge.on('menu:share:timeline', function(argv){
+            (dataForWeixin.callback)();
+            WeixinJSBridge.invoke('shareTimeline',{
+                "img_url":dataForWeixin.TLImg,
+                    "img_width":"120",
+                    "img_height":"120",
+                    "link":dataForWeixin.url,
+                    "desc":dataForWeixin.desc,
+                    "title":dataForWeixin.title
+            }, function(res){});
+        });
+        WeixinJSBridge.on('menu:share:weibo', function(argv){
+            WeixinJSBridge.invoke('shareWeibo',{
+                "content":dataForWeixin.title,
+                    "url":dataForWeixin.url
+            }, function(res){(dataForWeixin.callback)();});
+        });
+        WeixinJSBridge.on('menu:shareacebook', function(argv){
+            (dataForWeixin.callback)();
+            WeixinJSBridge.invoke('shareFB',{
+                "img_url":dataForWeixin.TLImg,
+                    "img_width":"120",
+                    "img_height":"120",
+                    "link":dataForWeixin.url,
+                    "desc":dataForWeixin.desc,
+                    "title":dataForWeixin.title
+            }, function(res){});
+        });
+    };
+    if(document.addEventListener){
+        document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+    }else if(document.attachEvent){
+        document.attachEvent('WeixinJSBridgeReady'   , onBridgeReady);
+        document.attachEvent('onWeixinJSBridgeReady' , onBridgeReady);
+    }
+})();
+
+window.onload=function(){
+	var $firstPage = $("#arrow_firstPage");
+	var $down = $("#arrow_down");
+	var $up = $("#arrow_up");
+	setInterval(function(){
+		$firstPage
+			.animate({"bottom":"20%"},500)
+			.animate({"bottom":"14.97%"},500);
+	},1000);
+	setInterval(function(){
+		$down
+			.animate({"top":"40px"},500)
+			.animate({"top":"0px"},500);
+	},1000);
+	setInterval(function(){
+		$up
+			.animate({"bottom":"40px"},500)
+			.animate({"bottom":"0px"},500);
+	},1000);
+}
+
+</script>
+<script src="//track.timepearls.com/js_tracker.min.js"></script>
+</html>
