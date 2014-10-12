@@ -78,6 +78,7 @@ function time_delta($passed){
     .video-tab .cur-icon{left: 61%;}
     .video-content{display: none;}
     .full-story{padding:7.9% 5%;}
+    .full-story .intro{font-family: Microsoft YaHei;}
     .full-story .story-img{width: 100%;padding-bottom: 55.6%;background: url(img/home-img.jpg);background-size: 100% 100%;}
     .full-story h2{margin-top:10.6%;font-size: 20px;color: #8497b0;text-align: center;}
     .full-story h3{margin-top:4%;font-size: 24px;color: #fff;text-align: center;}
@@ -88,6 +89,7 @@ function time_delta($passed){
     .h-line span{float:left;width: 22.6%;height: 0;margin-top:10px;border-bottom: 2px solid #767171;}
     .h-line .r-line{float: right;}
     .story-list{padding: 0 4.8%;padding-bottom:10px;list-style: none;}
+    .story-list .more-ending{position:relative;height:10px;margin-left:20%;margin-right:25%;margin-top: 10%;margin-bottom:5%;padding: 5px;padding-bottom:18px;border: 2px solid #bfbfbf;border-radius: 1px;text-align:center;}
     .story-list li{position:relative;margin-top: 10%;padding: 5px;padding-bottom:20px;border: 2px solid #bfbfbf;border-radius: 1px;}
     .story-list li .support{height:30px;color: #fff;font-size: 16px;position: absolute;bottom:-17px;right: 10px;}
     .support span {float:right;width:120px;height:28px;line-height:28px;text-align:center;border:1px solid #bfbfbf;background-color: #000;}
@@ -169,15 +171,13 @@ function time_delta($passed){
     <section class="home-content">
         <section class="full-story">
             <div class="story-img"></div>
-            <h2>现实版“宋云川”完整故事：</h2>
-            <h3>从化工到咨询</h3>
-            <p>现在是2013年12月底，漫长而扰人的求职季终于结束了。回首看看这次又号称“史上最艰难求职季”和尤为惨淡的咨询行业，不免感慨万分。在这段时间里，我见过了太多的面试官…</p>
-            <p><a href="http://mp.weixin.qq.com/s?__biz=MzA5NTM1NTUyNw==&mid=200771715&idx=1&sn=ebae93dd1e7361df3e5b23b7c29ab211#rd">read more&gt;&gt;</a></p>
+            <br>
+            <p><p><b class="intro">电影简介:</b></p>《Find Yourself》是由清华大学的理工科学生发起、筹款并制作的微电影，讲述了一个来到名校的大学生（宋云川），在学习和研究中感到吃力，并不喜欢自己所学的专业，也看不清自己的未来在哪，由于机遇巧合勇敢地向职场转型的故事……<a href="http://mp.weixin.qq.com/s?__biz=MzA5NTM1NTUyNw==&mid=200771715&idx=1&sn=ebae93dd1e7361df3e5b23b7c29ab211#rd">read more&gt;&gt;</a></p>
         </section>
         <section class="h-line">
             <span class="l-line"></span>
             <span class="r-line"></span>
-            精彩语录
+           "宋云川"们的故事
         </section>
         <ul class="story-list">
             <li>
@@ -186,7 +186,8 @@ function time_delta($passed){
                     <span><?php echo isset($vote_stats['ending_1'])?(int)$vote_stats['ending_1']:0?>人like</span>
                 </div>
                 <h6></h6>
-                <p>很多人的性格，或者说“骨子里的那种品格”，其实早在成年以前已经定型了。你的人生轨迹并不一定完全是受环境的摆弄，更可能是你自己的性格决定的。性格决定命运，甚至关乎成败。</p>
+                <p><p>刘羡然</p>
+                清华大学化工系，实习于麦肯锡、BCG、贝恩等国际知名管理咨询公司。 现任清华咨询俱乐部主席，AIESEC协会副主席，“易说点”创始人……<a href="http://www.baidu.com">他的故事>></a></p>
             </li>
             <li>
                 <div class="support">
@@ -194,7 +195,8 @@ function time_delta($passed){
                     <span><?php echo isset($vote_stats['ending_2'])?(int)$vote_stats['ending_2']:0?>人like</span>
                 </div>
                 <h6></h6>
-                <p>人总要认清自己的能力、兴趣、天赋到底在哪，有的事情是你天生就想做的，有的事情却不是你想做就能做好的。</p>
+                <p><p>宋恩平</p>
+                清华大学数学系，多份实习涵盖商业分析、数据处理、物流及电商调研等领域，斩获哥伦比亚、宾夕法尼亚、杜克等6所名校管理科学与工程硕士offer……  <a href="http://www.baidu.com">他的故事>></a></p>
             </li>
             <li>
                 <div class="support">
@@ -202,8 +204,11 @@ function time_delta($passed){
                     <span><?php echo isset($vote_stats['ending_3'])?(int)$vote_stats['ending_3']:0?>人like</span>
                 </div>
                 <h6></h6>
-                <p>我不相信简单的follow前人脚步的人会有成就，也不相信能轻易被别人convince的人会有多大出息。无论我讲什么，或者谁讲什么，永远独立思考才是最重要的。</p>
+                <p><p>石乐天</p>
+                清华大学电机系，实习于英菲尼迪私募股权基金与合益管理咨询公司、波士顿咨询公司，Endeavour Career求职辅导机构创业团队成员……  <a href="http://www.baidu.com">他的故事>></a></p>
             </li>
+            <div class="more-ending">更多精彩故事>>></div>
+            <p>戏如人生，现实中总在不断上演着宋云川的故事。看了电影，看了“宋云川”们的故事，你是否有所触动？关于理工科学生的就业转型，你有什么想说的呢，畅所欲言吧！</p>
         </ul>
         <section class="reply">
             <textarea name="reply" id="reply-content" rows="4" placeholder="有什么感想，你也来说说吧"></textarea>
@@ -472,7 +477,7 @@ function time_delta($passed){
             var _name = getCookie('commentName') || '匿名';
             if (_content) {
                 if ($('#reply-comment').attr('placeholder') != '说点什么吧'){
-                    _content = $('#reply-comment').attr('placeholder') + _content;
+                    _content = _content + $('#reply-comment').attr('placeholder');
                 }
                 $.ajax({
                     url: 'comment-reply.php',
@@ -482,6 +487,7 @@ function time_delta($passed){
                         // 可添加result判断
                         var _html = '<li>'
                                     +   '<h6>@'+_name+'<span class="reply-time">0秒前</span></h6>'
+                                    +   '<a class="comment-reply" data-id="' + result.id + '" data-name="' + _name + ':' + _content + '">回复</a>'
                                     +   '<p>'+_content+'</p>'
                                     +'</li>';
                         var _$li = $('#reply-reply-list-hidden').prepend(_html).find('li').eq(0);
@@ -573,8 +579,8 @@ var dataForWeixin={
     appId:  "",
     img:    "http://demo.timepearls.com/daoyan/img/daoyan-logo.jpg",
     url:    "http://demo.timepearls.com/daoyan/",
-    title:  "从化工到咨询，寻找内心真实的自己",
-    desc:   "人总要认清自己的能力、兴趣、天赋到底在哪，有的事情是你天生就想做的，有的事情却不是你想做就能做好的……",
+    title:  "Find Yourself",
+    desc:   "人生可以有不同的选择>>>",
     fakeid: ""
 };
 (function(){
