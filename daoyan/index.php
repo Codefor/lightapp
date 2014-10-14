@@ -63,12 +63,12 @@ function time_delta($passed){
     select::-ms-expand{display:none;}
     ::-ms-check{display:none;}
     body{font-family:"Microsoft YaHei";-webkit-user-select:none;-khtml-user-select:none;-ms-user-select:none;user-select:none;-webkit-text-size-adjust:none;-webkit-tap-highlight-color:rgba(0,0,0,0.4);overflow:hidden;font-size:1rem;background:#1C1F26;}
-    a{text-decoration:none;color:#333;-webkit-touch-callout:none;}
+    a{text-decoration:none;color:#8098b4;text-decoration:underline;-webkit-touch-callout:none;}
     a:hover{background-color:;}
     a,button,input{-webkit-touch-callout:none;}
     /* 浏览器重置样式 ]]*/
     
-    body{background-color:#000;color: #a6a6a6;}
+    body{background-color:#faf9f7;color: #555;}
     header{position:relative;width: 100%;height: 0;padding-bottom: 44%;background-color: #4e617a;}
     header .home{position:absolute;top:36.3%;left:16.7%;width: 22%;height:0;padding-bottom: 22.9%;border:none;background: url(img/home-icon.jpg) no-repeat;background-size: 200% 100%;border-radius: 50%;}
     header .video{position:absolute;top:36.0%;right:16.3%;width: 22.6%;height:0;padding-bottom: 23.3%;border:none;background: url(img/video-icon.jpg) no-repeat 100% 0;background-size: 200% 100%;border-radius: 50%;}
@@ -82,31 +82,31 @@ function time_delta($passed){
     .full-story .story-img{width: 100%;padding-bottom: 55.6%;background: url(img/home-img.jpg);background-size: 100% 100%;}
     .full-story h2{margin-top:10.6%;font-size: 20px;color: #8497b0;text-align: center;}
     .full-story h3{margin-top:4%;font-size: 24px;color: #fff;text-align: center;}
-    .full-story p{margin-top:2%;font-size: 16px;color: #a6a6a6;line-height: 1.5;}
+    .full-story p{margin-top:2%;font-size: 16px;color: #555;line-height: 1.5;}
     .full-story p a{float: right;color: #d9d9d9;text-decoration: underline;font-family: Arial;}
     .full-story p:after{visibility: hidden;display: block;font-size: 0;content: " ";clear: both;height: 0;}
     .h-line{text-align: center;font-size: 20px;color: #8497b0;}
     .h-line span{float:left;width: 22.6%;height: 0;margin-top:10px;border-bottom: 2px solid #767171;}
     .h-line .r-line{float: right;}
     .story-list{padding: 0 4.8%;padding-bottom:10px;list-style: none;}
-    .story-list .more-ending{position:relative;height:10px;margin-left:20%;margin-right:25%;margin-top: 10%;margin-bottom:5%;padding: 5px;padding-bottom:18px;border: 2px solid #bfbfbf;border-radius: 1px;text-align:center;}
-    .story-list li{position:relative;margin-top: 10%;padding: 5px;padding-bottom:20px;border: 2px solid #bfbfbf;border-radius: 1px;}
-    .story-list li .support{height:30px;color: #fff;font-size: 16px;position: absolute;bottom:-17px;right: 10px;}
-    .support span {float:right;width:120px;height:28px;line-height:28px;text-align:center;border:1px solid #bfbfbf;background-color: #000;}
-    .support input {float:right;width:40px;height:28px;border:1px solid #bfbfbf;border-radius:4px;background-color: #44546a;color: #fff;box-sizing: content-box;}
+    .story-list .more-ending{position:relative;height:10px;margin-left:20%;margin-right:25%;margin-top: 10%;margin-bottom:5%;padding: 5px;padding-bottom:18px;border: 2px solid #8199b1;border-radius: 8px;text-align:center;color: #504f5d;}
+    .story-list li{position:relative;margin-top: 10%;padding: 5px;padding-bottom:20px;border: 2px solid #bfbfbf;border-radius: 1px;color: #888;}
+    .story-list li .support{height:30px;color: #4b5167;font-size: 16px;position: absolute;bottom:-17px;right: 10px;background-color: #faf9f7;}
+    .support span {float:right;width:120px;height:28px;line-height:28px;text-align:center;border:1px solid #bfbfbf;}
+    .support input {float:right;width:40px;height:28px;border:1px solid #bfbfbf;border-radius:4px;background-color: #8397b0;color: #fff;box-sizing: content-box;}
     .story-list h6{color: #d0cece;}
-    .story-list p{color: #a6a6a6;font-size: 15px;}
+    .story-list p{color: #272528;font-size: 15px;}
     .story-list p a{color: #d9d9d9;text-decoration: underline;font-family: Arial;}
     .reply{margin-top:10px;padding: 5%;}
-    textarea{box-sizing:border-box;-webkit-box-sizing:border-box;width: 100%;resize: none;border: 2px solid #fff;box-shadow: inset 1px 1px 8px #8d8d8d, inset -1px -1px 8px #8d8d8d;padding: 10px;font-size: 16px;border-radius: 0;}
+    textarea{box-sizing:border-box;-webkit-box-sizing:border-box;width: 100%;resize: none;border: 2px solid #fff;box-shadow: inset 1px 1px 8px #8d8d8d, inset -1px -1px 8px #8d8d8d;padding: 10px;font-size: 16px;border-radius: 0;background-color: #f2f2f2;}
     .reply p{overflow: hidden;}
     .reply p .reply-button{float: right;width: 104px;height: 25px;margin-top:15px;background: url(img/comment-bg.png) no-repeat;background-size: 100% 100%;border: none;border-radius: 0;}
-    .reply p .input-name{float: right;width: 60px;height: 23px;margin-top:15px;padding-left:2px;background-color: #fff;border: 1px solid #fff;box-shadow: inset 1px 1px 3px #d2d2d2, inset -1px -1px 3px #d2d2d2;border-radius: 0;}
+    .reply p .input-name{float: right;width: 60px;height: 23px;margin-top:15px;padding-left:2px;background-color: #fff;border: 1px solid #fff;box-shadow: inset 1px 1px 3px #8d8d8d, inset -1px -1px 3px #8d8d8d;border-radius: 0;}
     .input-name::-webkit-input-placeholder {color:#000;}
-    .reply-list{margin-top:25px;border-top: 1px solid #595959;list-style: none;-webkit-placeholder-color: #000;}
-    .reply-list li{padding: 0 2px;border-bottom: 1px solid #595959;overflow: hidden;}
-    .reply-list h6{margin-top:20px;color: #fff;font-size: 18px;font-family: Arial;}
-    .reply-list p{margin-top:3px;color: #d9d9d9;font-size: 15px;font-family: \5b8b\4f53;line-height: 1.2;}
+    .reply-list{margin-top:25px;border-top: 1px solid #c0bfbd;list-style: none;-webkit-placeholder-color: #000;}
+    .reply-list li{padding: 0 2px;border-bottom: 1px solid #c0bfbd;overflow: hidden;}
+    .reply-list h6{margin-top:20px;color: #57585c;font-size: 18px;font-family: Arial;}
+    .reply-list p{margin-top:3px;color: #57585c;font-size: 15px;font-family: \5b8b\4f53;line-height: 1.2;}
     .reply-list .list-footer{margin-top: 15px;margin-bottom:20px;color: #8497b0;font-size: 15px;font-family: \5b8b\4f53;}
     .reply-list .list-footer a{float: right;color: #5b9bd5;}
 
@@ -147,7 +147,7 @@ function time_delta($passed){
     .edit-words p input{width: 180px;height: 20px;background-color: #f2f2f2;border: 1px solid #fff;box-shadow: inset 1px 1px 3px #d2d2d2, inset -1px -1px 3px #d2d2d2;border-radius: 0;}
     .edit-words p .w60{width: 60px;}
     .submit{margin:20px 0;text-align: center;}
-    .submit input{border: 1px solid #d9d9d9; border-radius: 4px;background-color: #70ad47;font-size: 20px;padding: 5px 40px;color: #fff;font-family: Microsoft YaHei;}
+    .submit input[type="button"]{border: 1px solid #d9d9d9; border-radius: 4px;background-color: #70ad47;font-size: 20px;padding: 5px 40px;color: #fff;font-family: Microsoft YaHei;}
     .reply-reply-list{display: none;}
     #reply-reply-list-hidden{display: block;}
     .reply-reply-list li{
@@ -160,6 +160,8 @@ function time_delta($passed){
     .reply-reply-list li h6{margin-top: 10px;}
     .reply-list-toggle{margin-left: 20px;}
     .reply-reply-list .comment-reply{float: right;margin-left: 20px;color: #8497b0;font-size: 15px;margin-top:3px;}
+
+    .submit .input-name{display:none;float: none;display:inline-block;width: 60px;height: 23px;margin:6px 5px 0 0;padding:0 0 0 2px;background-color: #fff;border: 1px solid #fff;box-shadow: inset 1px 1px 3px #d2d2d2, inset -1px -1px 3px #d2d2d2;border-radius: 0;font-size:16px;}
 </style>
 </head>
 <body>
@@ -251,6 +253,7 @@ function time_delta($passed){
             <h4>回复<span>Asa</span>:</h4>
             <textarea name="reply" id="reply-comment" rows="4" placeholder="有什么想说的吧"></textarea>
             <div class="submit">
+                <input type="text" name="name" class="input-name" id="reply-modal-name" placeholder="匿名">
                 <input type="button" id="reply-submit" data-id="" value="提交回复" />
             </div>
         </section>
