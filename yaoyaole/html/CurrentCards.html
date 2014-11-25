@@ -1,0 +1,548 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="../gamecss/main.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="../Js/jquery-1.7.2.min.js"></script>
+<meta name="viewport" content="width=device-width,user-scalable=yes" />
+<style type="text/css">
+#downBord
+{
+   position:fixed;
+   width:100px;
+   height:50px;   
+   top:750px;
+   margin-left:500px;
+   z-index:5000;
+}
+#slide
+{
+	position:absolute;
+	width:640px;
+    height:1136px;
+    background:url('../gameimage/GameSceneBac.png');
+}
+#main{
+	position:absolute;
+	margin:0px auto;
+	width:640px;
+}
+
+#holder{
+	width:630px;
+	overflow:hidden;
+	position:relative;
+	maring-left:5px;
+	min-height:648px;
+}
+.swSlider{
+	position:absolute;
+}
+.swControls{
+	position:absolute;
+	margin-top:0px;
+}
+
+a.swShowPage{
+	background-color:rgb(179, 132, 132);
+	float:left;
+	height:20px;
+	margin:2px 2px;
+	text-indent:-9999px;
+	width:20px;
+	-moz-border-radius:20px;
+	-webkit-border-radius:20px;
+	border-radius:20px;
+}
+
+a.swShowPage:hover,
+a.swShowPage.active{
+	background-color:rgb(236, 126, 139);
+	-moz-box-shadow:0 0 7px #1e435d inset;
+	box-shadow:0 0 7px #1e435d inset;
+}
+
+#holder li{
+	margin-top:30px;
+	margin-left:20px;
+	width:180px;
+	height:186px;
+	float:left;
+	
+}
+
+
+.clear{
+	clear:both;
+}
+
+
+</style>
+<script>
+	function setScreen(){
+		var sUserAgent = navigator.userAgent.toLowerCase(); 
+	    var bIsIphoneOs = sUserAgent.match(/iphone os/i) =="iphone os"; 
+	    var bIsAndroid = sUserAgent.match(/android/i) =="android"; 
+        if(bIsIphoneOs){
+    	     return;
+        }
+		var standardDpi,dpi,w,scale;
+		w = window.screen.width;
+		if(w>0){
+		    if(w < 320){
+		        standardDpi = 120;
+		    }else if(w < 480){
+		        standardDpi = 160;
+		    }else if(w < 640){
+		        standardDpi = 240;
+		    }else if(w < 960){
+		        standardDpi = 320;
+		    }else if(w < 1280){
+		        standardDpi = 480;
+		    }else{
+		        standardDpi = 640;
+		    }
+		}
+		dpi = 640*standardDpi/w;
+		dpi = Math.floor(dpi);
+		scale = w/640;
+		document.querySelector("meta[name=viewport]").setAttribute('content','width=640,initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0,target-densitydpi='+dpi+', user-scalable=0');
+		if ("-ms-user-select" in document.documentElement.style && navigator.userAgent.match(/IEMobile\/10\.0/))
+		{
+		    var msViewportStyle = document.createElement("style");
+		    msViewportStyle.appendChild(
+		        document.createTextNode("@-ms-viewport{width:auto!important}")
+		    );
+		    document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+		}
+	}
+	setScreen();
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>摇摇乐</title>
+<script type="text/javascript">
+
+var chooseWitch = 0;
+
+	$(function() {
+		$.post("commonCard.php", null, function(data, status) {
+
+			if (status == "success") {		
+				 var list = $.parseJSON(data);
+				 for ( var i = 0; i < list.length; i++) {
+					var cardCategoryId = list[i]["cardCategoryId"];
+					var cardContent = list[i]["cardContent"];
+					var cardInfoId = list[i]["cardInfoId"];
+					var cardCategoryContent = list[i]["cardCategoryContent"];
+					if(cardContent.length>4){
+						cardContent=Xreplace(cardContent,4);
+					}
+					
+					
+					if(cardCategoryContent=="大冒险"){
+						chooseWitch=1;
+					}
+					if(cardCategoryContent=="真心话"){
+						chooseWitch=0;
+					}
+					if(cardCategoryContent=="交互活动"){
+						chooseWitch=2;
+					}
+					if(cardCategoryContent=="更刺激的"){
+						chooseWitch=3;
+					}
+					
+					var back = "../gameimage/card_red2.png";
+					switch(chooseWitch)
+					{
+					case 0:back = "../gameimage/card_red2.png";break;
+					case 1:back = "../gameimage/card_green2.png";break;
+					case 2:back = "../gameimage/card_yellow2.png";break;
+					case 3:back = "../gameimage/card_purple2.png";break;
+					}
+					
+					var content=cardContent.replace(/(.{4})/g,"$1 ");//将得到的内容每4个字符插入一个空格传回去
+
+					var newrow="<li style=\"list-style:none;\"><div style=\"width:180px;height:186px;padding-top:60px; background: url('"+back+"') no-repeat; background-size:180px 186px;color:#fff;font-size:20px;font-family:微软雅黑;font-weight:bold; \" onclick=\"myFunction("+cardInfoId+")\">"+content+"</div></li>";
+					$("#holder").append(newrow);
+				}
+				 $('#holder').sweetPages({perPage:9});
+					var controls = $('.swControls').detach();
+					controls.appendTo('#main');
+					$(".swSlider").css("left","0px");
+			}else{
+				
+			}
+		});
+		
+
+		touchMove(); 
+		
+	});
+	
+	function Xreplace(str,length)
+	{
+		var reg = new RegExp("(\\S{" + length + "})","g");
+		return str.replace(reg,"$1<br/>");
+	}
+
+	
+var touchLengthX = 0;
+var touchLengthY = 0;
+var allLength = 0;
+var countNum = 0;
+var isUp = 0;
+var startTime = 0;
+var endTime = 0;
+var left = -1;
+	function touchMove(){
+		
+		document.getElementById("holder").addEventListener('touchstart',touch, false);
+		document.getElementById("holder").addEventListener('touchmove',touch, false);
+		document.getElementById("holder").addEventListener('touchend',touch,false);
+		var startX;
+		var startY;
+		var endX;
+		var endY;
+		var totalLength;
+		var width;
+		var ifUp;
+	    function touch (event){
+	    
+	    var event = event || window.event;
+		switch (event.type) {
+		
+			case "touchstart":
+			startX = event.touches[0].screenX;
+			startY = event.touches[0].screenY;
+			touchLengthX = 0;
+			touchLengthY = 0;
+			totalLength = parseFloat($(".swSlider").css("left").substring(0,$(".swSlider").css("left").length-2));
+			ifUp=-1;
+			break;
+					
+				
+			case "touchmove":
+				
+				event.preventDefault();
+				endX = event.touches[0].screenX;
+				endY = event.touches[0].screenY;	
+				touchLengthX = Math.abs(endX - startX);
+				touchLengthY = Math.abs(endY - startY);
+				
+				if(ifUp==-1&&touchLengthX <= touchLengthY){
+					ifUp = 1;
+				}
+				else
+				{
+					ifUp=0;
+				} 
+				 if(ifUp == 1)
+				{
+					touchLengthY = 0;
+					touchLengthY = endY - startY;
+					ifUp=3;
+					$("#yidong").show();
+					document.getElementById("yidong").addEventListener('touchstart',yidongtouch,false);
+					document.getElementById("yidong").addEventListener('touchmove',yidongtouch,false);
+					document.getElementById("yidong").addEventListener('touchend',yidongtouch,false);
+					
+				} 
+				if(ifUp==0){
+		
+					var moveLength = (endX - startX)*2;
+					totalLength = parseFloat($(".swSlider").css("left").substring(0,$(".swSlider").css("left").length-2)) + moveLength; 
+					width=$(".swSlider").width();
+					if(width==0){
+						return;
+					}
+					$(".swShowPage").each(function(i) {
+						if($(this).text()==Math.round(Math.abs(totalLength/640))+1){
+							
+		                  $(this).addClass('active').siblings().removeClass('active');
+						}
+		                 
+		              });
+						
+					
+					if(moveLength<0&&width<Math.abs(parseFloat($(".swSlider").css("left").substring(0,$(".swSlider").css("left").length-2)))+640){
+						
+						if(parseFloat($(".swSlider").css("left").substring(0,$(".swSlider").css("left").length-2))<=-(width-640)&&parseFloat($(".swSlider").css("left").substring(0,$(".swSlider").css("left").length-2))>-(width-640)-60){
+							totalLength=parseFloat($(".swSlider").css("left").substring(0,$(".swSlider").css("left").length-2)) + moveLength;
+							if(totalLength<-(width-640)-60){
+								totalLength=-(width-640)-60;
+							}
+						}
+						if(parseFloat($(".swSlider").css("left").substring(0,$(".swSlider").css("left").length-2))<=-(width-640)-60&&parseFloat($(".swSlider").css("left").substring(0,$(".swSlider").css("left").length-2))>-(width-640)-100){
+							totalLength=parseFloat($(".swSlider").css("left").substring(0,$(".swSlider").css("left").length-2)) + moveLength/2;
+							if(totalLength<-(width-640)-100){
+								totalLength=-(width-640)-100;
+							}
+						}
+						if(parseFloat($(".swSlider").css("left").substring(0,$(".swSlider").css("left").length-2))<=-(width-640)-100&&parseFloat($(".swSlider").css("left").substring(0,$(".swSlider").css("left").length-2))>-(width-640)-140){
+							totalLength=parseFloat($(".swSlider").css("left").substring(0,$(".swSlider").css("left").length-2)) + moveLength/4;
+							if(totalLength<-(width-640)-140){
+								totalLength=-(width-640)-140;
+							}
+						}
+						if(parseFloat($(".swSlider").css("left").substring(0,$(".swSlider").css("left").length-2))<=-(width-640)-140&&parseFloat($(".swSlider").css("left").substring(0,$(".swSlider").css("left").length-2))>-(width-640)-180){
+							totalLength=parseFloat($(".swSlider").css("left").substring(0,$(".swSlider").css("left").length-2)) + moveLength/6;
+							if(totalLength<-(width-640)-180){
+								totalLength=-(width-640)-180;
+							}
+						}
+						if(parseFloat($(".swSlider").css("left").substring(0,$(".swSlider").css("left").length-2))<=-(width-640)-180&&parseFloat($(".swSlider").css("left").substring(0,$(".swSlider").css("left").length-2))>-(width-640)-220){
+							totalLength=parseFloat($(".swSlider").css("left").substring(0,$(".swSlider").css("left").length-2)) + moveLength/7;
+							if(totalLength<-(width-640)-220){
+								totalLength=-(width-640)-220;
+							}
+						}
+						if(parseFloat($(".swSlider").css("left").substring(0,$(".swSlider").css("left").length-2))<=-(width-640)-220&&parseFloat($(".swSlider").css("left").substring(0,$(".swSlider").css("left").length-2))>=-(width-640)-260){
+							totalLength=parseFloat($(".swSlider").css("left").substring(0,$(".swSlider").css("left").length-2)) + moveLength/8;
+							if(totalLength<-(width-640)-260){
+								totalLength=-(width-640)-260;
+							}
+						}
+						if(parseFloat($(".swSlider").css("left").substring(0,$(".swSlider").css("left").length-2))<=-(width-640)-260){
+							totalLength=parseFloat($(".swSlider").css("left").substring(0,$(".swSlider").css("left").length-2)) + moveLength/9;
+						}
+						if(totalLength<-(width-640)-280){
+							totalLength=-(width-640)-280;
+						}
+					}
+					if(moveLength>0&&parseFloat($(".swSlider").css("left").substring(0,$(".swSlider").css("left").length-2))>0){
+						if(parseFloat($(".swSlider").css("left").substring(0,$(".swSlider").css("left").length-2))>0&&parseFloat($(".swSlider").css("left").substring(0,$(".swSlider").css("left").length-2))<60){
+							totalLength=parseFloat($(".swSlider").css("left").substring(0,$(".swSlider").css("left").length-2)) + moveLength;
+							if(totalLength>60){
+								totalLength=60;
+							}
+						}
+						if(parseFloat($(".swSlider").css("left").substring(0,$(".swSlider").css("left").length-2))>=60&&parseFloat($(".swSlider").css("left").substring(0,$(".swSlider").css("left").length-2))<100){
+							totalLength=parseFloat($(".swSlider").css("left").substring(0,$(".swSlider").css("left").length-2)) + moveLength/2;
+							if(totalLength>100){
+								totalLength=100;
+							}
+						}
+						if(parseFloat($(".swSlider").css("left").substring(0,$(".swSlider").css("left").length-2))>=100&&parseFloat($(".swSlider").css("left").substring(0,$(".swSlider").css("left").length-2))<140){
+							totalLength=parseFloat($(".swSlider").css("left").substring(0,$(".swSlider").css("left").length-2)) + moveLength/4;
+							if(totalLength>140){
+								totalLength=140;
+							}
+						}
+						if(parseFloat($(".swSlider").css("left").substring(0,$(".swSlider").css("left").length-2))>=140&&parseFloat($(".swSlider").css("left").substring(0,$(".swSlider").css("left").length-2))<180){
+							totalLength=parseFloat($(".swSlider").css("left").substring(0,$(".swSlider").css("left").length-2)) + moveLength/6;
+							if(totalLength>180){
+								totalLength=180;
+							}
+						}
+						if(parseFloat($(".swSlider").css("left").substring(0,$(".swSlider").css("left").length-2))>=180&&parseFloat($(".swSlider").css("left").substring(0,$(".swSlider").css("left").length-2))<220){
+							totalLength=parseFloat($(".swSlider").css("left").substring(0,$(".swSlider").css("left").length-2)) + moveLength/7;
+							if(totalLength>220){
+								totalLength=220;
+							}
+						}
+						if(parseFloat($(".swSlider").css("left").substring(0,$(".swSlider").css("left").length-2))>=220&&parseFloat($(".swSlider").css("left").substring(0,$(".swSlider").css("left").length-2))<260){
+							totalLength=parseFloat($(".swSlider").css("left").substring(0,$(".swSlider").css("left").length-2)) + moveLength/8;
+							if(totalLength>260){
+								totalLength=260;
+							}
+						}
+						if(parseFloat($(".swSlider").css("left").substring(0,$(".swSlider").css("left").length-2))>=260){
+							totalLength=parseFloat($(".swSlider").css("left").substring(0,$(".swSlider").css("left").length-2)) + moveLength/9;
+						}
+						if(totalLength>280){
+							totalLength=280;
+						}
+						
+					}
+					
+					$(".swSlider").css("left",totalLength);
+					startX = endX;
+				}
+				break;
+			case "touchend":
+				if(ifUp==3){
+					$("#yidong").hide();
+				}
+				ifUp=-1
+				if(totalLength>280){
+					totalLength=280;
+				}
+				if(Math.abs(totalLength)>width-640){
+					totalLength=-(width-640)-280;
+				}
+				totalLength=-(Math.round(Math.abs(totalLength/640)))*640;
+				$(".swSlider").stop().animate({'left':totalLength},'0.03s');
+				
+				break; 
+			}
+
+		}
+	}
+	function yidongtouch(event){
+		$("#yidong").hide();
+	}
+	function myFunction(replaceId){
+		window.location.href="ExchangeCard.html?replaceId="+replaceId;
+	}
+	function back()
+	{
+		
+		$.post("unSave", null, function(data, status) {
+			if (status == "success") {
+				window.location.href = "Game.html";
+			}
+		});
+	}
+	function save()
+	{
+		window.location.href = "Game.html";
+	}
+	var num_ct = 0;
+	function down()
+	{
+		++num_ct;
+		if(num_ct<10)
+		show();
+	    var width = window.screen.width;
+		var heigth = window.screen.height;
+		var nheigth = 1136*width/640;
+		var maxscroll = nheigth - heigth;
+		if(maxscroll&&document.body.scrollTop<maxscroll)
+			{
+			 $("#downBord").css("display","block");
+			}
+		else
+			$("#downBord").css("display","none");
+	}
+	sh=setInterval('down()',300);	
+	function show(){
+
+		 var imgid=document.getElementById("downBord");
+
+		 if(imgid.style.visibility == "visible")
+
+		 	imgid.style.visibility = "hidden";
+
+		 else
+
+		 	imgid.style.visibility = "visible";
+
+		 
+
+		  }
+</script>
+</head>
+<body style = "background:url('')">
+<div id = "downBord" style="background-image:url(../gameimage/jiantou.png)"></div>
+<div id="slide">
+	<div id="head" class="head">
+		<div style="font-size: 40px;color:#FFF;"><div style="font-size:40px;color:#FFF;width:200px;height:50px;text-align:center;">更换卡牌</div></div>
+	</div>
+	<div id="yidong" style="position:absolute;width:640px; height:900px;top:80px;display:none;z-index:1001;" align="center">
+	</div>
+	<div style="position:absolute;width:640px; height:648px;top:120px;" align="center">
+
+		<div id="main">
+			<div id="holder">
+			
+			</div>
+		</div>
+
+	</div>
+	<div style="position:absolute; top:35px; margin-left:20px;">
+	<input type="image" style=" border:none;width:50px; height:50px; " src="../gameimage/StartIndex/startImgBtn_Back.png" onclick="back()" ></input>
+	</div>
+	<div style="position:absolute; top:800px; margin-left:180px;">
+		<div style="border:none;width:268px; height:134px;background:url('../gameimage/button_save01.png');"  onclick="save()"></div>
+	</div>
+</div>
+</body>
+<script type="text/javascript">
+(function($){
+
+	
+$.fn.sweetPages = function(opts){
+	
+	
+	if(!opts) opts = {};
+	
+	var resultsPerPage = opts.perPage||9;
+	
+	
+	var ul = this;
+	
+	var li = ul.find('li');
+	
+	
+	var pagesNumber = Math.ceil(li.length/resultsPerPage);
+	
+	
+	if(pagesNumber<2) return this;
+	
+	
+	var swControls = $('<div class="swControls">');
+	
+	
+	for(var i=0;i<pagesNumber;i++)
+	{
+		
+		li.slice(i*resultsPerPage,(i+1)*resultsPerPage).wrapAll('<div class="swPage" />');
+		
+		
+		swControls.append('<a href="" class="swShowPage">'+(i+1)+'</a>');
+	}
+
+	ul.append(swControls);
+	
+	var maxHeight = 0;
+	var totalWidth = 0;
+	
+	var swPage = ul.find('.swPage');
+	
+	
+	swPage.each(function(){
+				
+		var elem = $(this);
+
+		var tmpHeight = 0;
+		elem.find('li').each(function(){tmpHeight+=$(this).data('height');});
+
+		if(tmpHeight>maxHeight)
+			maxHeight = tmpHeight;
+
+		totalWidth+=elem.outerWidth();
+		
+		elem.css('float','left').width(ul.width());
+	});
+	
+	swPage.wrapAll('<div class="swSlider" />');
+	ul.height(maxHeight);
+	
+	var swSlider = ul.find('.swSlider');
+	swSlider.append('<div class="clear" />').width(totalWidth);
+
+	var hyperLinks = ul.find('a.swShowPage');
+	
+	hyperLinks.click(function(e){
+		$(this).addClass('active').siblings().removeClass('active');
+		swSlider.stop().animate({'left':-(parseInt($(this).text())-1)*ul.width()},'slow');
+		e.preventDefault();
+	});
+	
+
+	hyperLinks.eq(0).addClass('active');
+	
+
+	swControls.css({
+		'left':'50%',
+		'margin-left':-swControls.width()/2
+	});
+	
+	return this;
+	
+}})(jQuery);
+
+</script>
+</html>

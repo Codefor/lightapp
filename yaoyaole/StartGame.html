@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<link href="gamecss/main.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="Js/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="http://widget.renren.com/js/rrshare.js"></script>
+<meta name="viewport" content="width=device-width,user-scalable=yes" />
+<style>
+.shareWindow{ 
+    width:450px; 
+	height:300px;
+    position:absolute; 
+    display:none; 
+	top:70px; 
+	margin-left:1px;
+    } 
+#downBord
+{
+   position:fixed;
+   width:100px;
+   height:50px;   
+   top:750px;
+   margin-left:500px;
+   z-index:5000;
+}
+#mcover {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+    z-index: 4002;
+}
+#mcover img {
+    position: fixed;
+    right: 18px;
+    top: 5px;
+    width: 260px!important;
+    height: 180px!important;
+    z-index: 20001;
+}
+</style>
+<script>
+	function setScreen(){
+		var sUserAgent = navigator.userAgent.toLowerCase(); 
+	    var bIsIphoneOs = sUserAgent.match(/iphone os/i) =="iphone os"; 
+	    var bIsAndroid = sUserAgent.match(/android/i) =="android"; 
+        if(bIsIphoneOs){
+    	     return;
+        }
+		var standardDpi,dpi,w,scale;
+		w = window.screen.width;
+		if(w>0){
+		    if(w < 320){
+		        standardDpi = 120;
+		    }else if(w < 480){
+		        standardDpi = 160;
+		    }else if(w < 640){
+		        standardDpi = 240;
+		    }else if(w < 960){
+		        standardDpi = 320;
+		    }else if(w < 1280){
+		        standardDpi = 480;
+		    }else{
+		        standardDpi = 640;
+		    }
+		}
+		dpi = 640*standardDpi/w;
+		dpi = Math.floor(dpi);
+		scale = w/640;
+		document.querySelector("meta[name=viewport]").setAttribute('content','width=640,initial-scale=1.0, maximum-scale=3.0, minimum-scale=1.0,target-densitydpi='+dpi+', user-scalable=0');
+		if ("-ms-user-select" in document.documentElement.style && navigator.userAgent.match(/IEMobile\/10\.0/))
+		{
+		    var msViewportStyle = document.createElement("style");
+		    msViewportStyle.appendChild(
+		        document.createTextNode("@-ms-viewport{width:auto!important}")
+		    );
+		    document.getElementsByTagName("head")[0].appendChild(msViewportStyle);
+		}
+	}
+	setScreen();
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>摇摇乐</title>
+<script type="text/javascript">
+var time=0;
+var timeId;
+$(function(){
+		$.post("html/isCommonDay.php",null,function(data,status){
+		if(status == "success"){
+			var list = $.parseJSON(data);
+			var isCommonDay = list["isCommonDay"];
+			var cardupdate = list["cardupdate"];
+				if(isCommonDay == 1){
+					$("#festalval").show();
+					var jieshushijian = list["endTime"];
+					var myDate = new Date();
+					var hh=myDate.getHours();
+			        var mm=myDate.getMinutes();
+					var ss=myDate.getSeconds();
+					var yy=myDate.getFullYear();
+					var month=myDate.getMonth()+1;       
+					var date=myDate.getDate();
+					var nowDate = yy + "-" + month + "-" + date + " " + hh + ":" + mm + ":" + ss;			
+					nowDate = nowDate.replace(/\-/gi,"/");
+					var resultEndTime = jieshushijian.replace(/\-/gi,"/");
+					var time1 = new Date(nowDate).getTime();
+					var time2 = new Date(resultEndTime).getTime();
+					time = (time2 - time1)/1000;
+					timeId = setInterval(setEndTime,1000);
+					setEndTime();
+					$("#share").css('left','15px');
+					$("#time").show();
+					$("#time_mark").show();
+				}
+				if(cardupdate == 1){
+					$("#info").html("亲,有卡牌更新哦!");
+					setTimeout(clearText,3000);
+				}
+			}
+	  });
+	 var urlinfo=window.location.href; 
+		var position=urlinfo.indexOf("=", 0);
+		var info=urlinfo.substring(position+1, urlinfo.length);
+		if(info == 0){
+			$("#info").html("电话号码错误!");
+		}
+	$("#startGame").bind("click", function(){
+		window.location.href = "html/Game.html";
+	});
+});
+var num_ct = 0;
+function down()
+{
+	++num_ct;
+	if(num_ct<10)
+	show();
+    var width = window.screen.width;
+	var heigth = window.screen.height;
+	var nheigth = 1136*width/640;
+	var maxscroll = nheigth - heigth;
+	if(maxscroll&&document.body.scrollTop<maxscroll)
+		{
+		 $("#downBord").css("display","block");
+		}
+	else
+		$("#downBord").css("display","none");
+}
+sh=setInterval('down()',300);
+function show(){
+
+	 var imgid=document.getElementById("downBord");
+
+	 if(imgid.style.visibility == "visible")
+
+	 	imgid.style.visibility = "hidden";
+
+	 else
+
+	 	imgid.style.visibility = "visible";
+
+	 
+
+	  }
+
+
+
+function clearText(){
+	$("#info").html('');
+}
+function setEndTime(){
+	time=time-1;
+	if(time == 0){
+		clearTimeout(timeId);
+		$("#festalval").hide();
+		$("#time").hide();
+		$("#time_mark").hide();
+	}
+	setTime();
+}
+
+function setTime(){
+	var date = parseInt(time/60/60/24);
+	var hour = parseInt(time/60/60%24);
+	var min = parseInt(time%(60*60)/60);
+	var sec = parseInt(time%60);
+	$("#time").html(date+"天" + hour + "时" + min + "分" + sec + "秒");
+}
+function share(){
+			
+	document.getElementById('shareWindow').style.display="block";
+	document.getElementById('shade').style.display="block";
+	
+}
+
+function  goToRewardScene()
+{
+	window.location.href="html/Reward.html"
+	}
+function  goToExplain()
+{
+	window.location.href="html/Explain.html"
+}
+
+</script>
+
+</head>
+<body>
+<div id = "downBord" style="background-image:url(gameimage/jiantou.png)"></div>
+		<div class="StartIndex_title_1">
+        	<!-- <input type="image" src="gameimage/StartIndex/startImgBtn_Back.png" onclick="goback()"/> -->
+        </div>
+		<div class="StartIndex_title_2" style="font-weight:bold;"><div style="font-size:40px;color:#FFF;width:200px;height:50px;text-align:center;">摇摇乐</div></div>
+		<div class="StartIndex_title_3" >
+        	<input type="image"  src="gameimage/button_help01.png" onclick=" goToExplain()"/>
+        </div>
+ 
+   <div id="info" style="position:absolute;top:160px;font-size:24px;margin-left:220px;color:rgb(254, 72, 1);"></div>
+	<div style="position:absolute;top:200px;">
+        <div style="margin:0 auto;">
+        	<div class="StartIndex_midle_1" id="share"><input type="image"  src="gameimage/button_fenxiang01.png" onClick="share()"/></div>
+            <div id="shareBtn" class="bshare-custom icon-medium-plus"style="float:left;width:300px;height:50px; display:none; margin-left:150px;position:absolute;top:800px; -webkit-transform:scale(1.5);  ">
+	        <div class="bsPromo bsPromo2"></div>
+        
+	        <a title="分享到新浪微博" class="bshare-sinaminiblog"></a>
+	        <a title="分享到微信" class="bshare-weixin" href="javascript:void(0);"></a>
+	        <a title="分享到人人网" class="bshare-renren"></a>
+	        <a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a>
+	        </div>
+	        <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/buttonLite.js#style=-1&amp;uuid=&amp;pophcol=2&amp;lang=zh"></script>
+	        <script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+            
+            <div id="time_mark" style="display:none;position:absolute;top:780px;margin-left:420px;font-family:微软雅黑;font-size:20px;color:rgb(254, 72, 1);">活动倒计时:</div>
+        	<div id="time" style="position:absolute;top:800px;display:none;margin-left:400px;font-family:微软雅黑;font-size:20px;color:rgb(254, 72, 1);"></div>
+            <div id="festalval" class="StartIndex_midle_2"><input type="image"  src="gameimage/button_choujiang01.png" onClick="goToRewardScene()"/></div>      
+    </div>
+    <div id="startGame">
+	<div class="StartIndex_midle"><input type="image" src="gameimage/zhuanpan_logo.png"/></div>
+	<div class="StartIndex_midle_footerfont" style="color:rgb(254, 72, 1);">点击屏幕开始游戏</div>
+    </div>
+	</div>
+	<div id="shade" style=" position:absolute;height:1136px; width:640px;display:none; background-color:#000;filter:alpha(opacity=50); -moz-opacity:0.5; -khtml-opacity: 0.5; opacity: 0.5; z-index:3000">
+	</div>
+	
+	<div class="shareWindow" id="shareWindow" style="z-index:4000;top:350px;margin-left:100px;"> 
+	<div style="margin-left:-80px; margin-top:-200px; width:593px; height:636px; background-image:url(gameimage/pic_tanchu02.png);">
+		<span id="warnmsg" style="font-family:微软雅黑; font-size:40px; position:absolute; margin:140px 160px; width:300px; color:rgb(254, 72, 1)">请选择分享平台</span>
+   		<div style="position:absolute; margin:210px 90px; width:500px; height:300px;">
+        <input type="image" id="btnqq" src="gameimage/icon-weixin.png"  id="img1" style="margin-top:100px; margin-left:-20px; z-index:4001; position:relative;" class="imgbutton" />
+        <input type="image" id="btnqq" src="gameimage/icon-weibo.png" id="img2" class="imgbutton" style="margin-top:20px;margin-left:40px; z-index:4001; position:relative;"/>
+        <input type="image" id="btnqq" src="gameimage/icon-renren.png" id="img3" class="imgbutton" style="margin-left:40px; margin-top:20px; z-index:4001; position:relative;" />
+        <img src="gameimage/card_choose.png" id="kk1" style="position:absolute; top:85px; left:-35px; width:154px; height:154px; z-index:4000; display:none;"/>
+        <img src="gameimage/card_choose.png" id="kk2" style="position:absolute; top:85px; left:134px; width:154px; height:154px; z-index:4000; display:none;"/>
+        <img src="gameimage/card_choose.png" id="kk3" style="position:absolute; top:85px; left:300px; width:154px; height:154px; z-index:4000; display:none;"/>
+        </div>
+    </div>
+		<div style="position:absolute; margin:0px auto;">
+		<input type="image" id="sharesure" src="gameimage/button_ok01.png" style=" position:absolute; margin:25px -50px;"/>
+		<input type="image" id="sharecancel" src="gameimage/button_no01.png" style=" position:absolute; margin:25px 230px;"/>
+		</div>
+	</div>
+<div id="mcover" onclick="document.getElementById('mcover').style.display='none';" style="display:none;">
+        <img src="gameimage/guide.png" />
+</div> 
+
+
+</body>
+<script type="text/javascript">
+var websiteurl;
+var sharecontent;
+var shareurl="test";
+$(".imgbutton").click(function(){ 
+	var num=$(this).index()+1;
+	switch(num){
+	case 1: shareurl="123456";break;
+	case 2: shareurl="http://v.t.sina.com.cn/share/share.php?url=http://www.haidilao.com/index.html&title='海底捞火锅，大家一起来摇摇乐！'";break;
+	case 3: shareurl="12345678";break;
+	}
+	for(var j=1;j<=3;j++){
+		if(j==num){
+			$('#kk'+num).css('display','block');
+		}else{
+			$('#kk'+j).css('display','none');
+		}
+	} 
+});
+$("#sharesure").click(function(){ 
+
+	if(shareurl.length>50){
+		window.open (shareurl,'分享到','height=600px,width=400px,top=0,left=0,toolbar=no,menubar=no,scrollbars=no, resizable=no,location=no, status=no');
+	}else if(shareurl=="123456"){
+		document.getElementById('mcover').style.display='block';
+	}else if(shareurl=="12345678"){
+		shareClick();
+	}else{
+		bobojia();
+		setTimeout('removebobo()',2000);
+	}
+});
+$("#sharecancel").click(function(){
+	$('#shareWindow').css('display','none');
+	$('#shade').css('display','none');
+	for(var j=1;j<=3;j++){
+		$('#kk'+j).css('display','none');
+	}
+	shareurl="";
+});
+var sh;
+var viewnum=0;
+function viewbobo(){
+	 var bo=document.getElementById('warnmsg').style;
+	 bo.opacity=viewnum;
+	 viewnum=viewnum+0.1;
+	 if(viewnum>1.5){
+		 viewnum=0.1;
+	 }
+}
+function bobojia(){
+	document.getElementById('sharesure').disabled=true;
+	sh=setInterval('viewbobo()',40);
+}
+function removebobo(){
+	clearInterval(sh);
+	sh=null;
+	document.getElementById('warnmsg').style.opacity=1;
+	document.getElementById('sharesure').disabled=false;
+	
+}
+function shareClick() {
+	var rrShareParam = {
+		resourceUrl : 'http://www.haidilao.com/index.html',	
+		srcUrl : 'http://www.haidilao.com/index.html',	
+		pic : 'http://www.haidilao.com/statics/images/bodypic2.jpg',		
+		title : '海底捞火锅瑶瑶乐',	
+		description : '各位亲们，来海底捞火锅玩摇摇乐吧！'	
+	};
+	rrShareOnclick(rrShareParam);
+}
+</script>
+</html>
+

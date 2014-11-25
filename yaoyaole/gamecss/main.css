@@ -1,0 +1,48 @@
+*{padding:0;font:12px/1.3em "Microsoft YaHei","Microsoft JhengHei",Arial,Helvetica,sans-serif;margin-left:0;margin-right:0;margin-top:0;outline:0;-webkit-tap-highlight-color:rgba(0,0,0,0);word-break:keep-all;white-space:nowrap}
+html{margin:0 auto;width:640px;height:100%;background:url('../gameimage/beijing.png') repeat-x;}
+body{margin:0 auto;width:640px;height:100%; min-height: 1000px;}
+.content{font-size:14px;top:150px;position:absolute;margin-left:50px}
+.head{font-size:40px;color:#FFF;width:200px;height:50px;text-align:center;margin-left:200px;top:30px;position:absolute}
+.text{width:160px;height:30px}
+div{border:0;padding:0}
+.button{width:60px;height:40px}
+.left{float:left}
+.ft_line{background-color:#161616;height:3px;margin:0 auto;width:980px}
+.main_hr{margin-top:2px;height:28px;width:100%;border-radius:5px 5px 5px 5px;background-color:#c6e7f5}
+.main_hr_font{font-size:18px;padding:2px 2px 2px 2px;margin-left:20px}
+.main_search{border:1px solid #677885;border-radius:5px 5px 5px 5px;margin-top:10px;height:80px}
+.main_search_font{font_size:20px;padding:8px 8px 8px;font-weight:bold}
+.main_search_button{background-color:blue;color:black;width:70px;text-align:center}
+.main_table_border{margin-top:20px;border:1px solid #677885;border-radius:5px 5px 5px 5px;padding:10px 10px 10px 10px}
+.main_table{border-collapse:collapse;width:100%}
+table th{background-color:#a7e4fd;height:30px;text-align:center;color:#000;font-weight:bold}
+table tr{height:30px}
+.table_tr{height:30px;width:100%;background-color:#a7e4fd}
+table a{margin-left:5px}
+.main_br{margin-top:0;height:40px;width:100%;background-color:#cfffff}
+.main_br_button{margin-top:5px;margin-left:20px;width:50px;color:#080e0f;height:30px;border-color:#f7f7f7;border-radius:5px 5px 5px 5px;background-color:#c0d3db;cursor:pointer;font-weight:bold}
+.main_br_page{margin-top:1px;height:34px;width:100%;color:#000;background-color:#a7e4fd}
+.main_br_select{background:#0078ae;border-radius:5px 5px 5px 5px;color:#eaf5f7}
+.main_br_page_p{padding-top:15px;height:20px;float:right;display:inline;margin-right:5px}
+.StartIndex_title{width:300px;height:90px}
+.StartIndex_title_1{width:40px;height:50px;float:left;margin-top:30px;margin-left:15px}
+.StartIndex_title_2{font-family:微软雅黑;font-size:40px;color:#FFF;width:200px;height:50px;float:left;text-align:center;margin-left:150px;margin-top:30px}
+.StartIndex_title_3{width:40px;height:50px;float:left;margin-left:100px;margin-top:30px}
+.logo-text{text-align: center;font-size: 25px;color: rgb(254, 72, 1);}
+.StartIndex_midle{margin-top:0;margin-left:90px;width:450px;height:450px}
+.StartIndex_midle_1{float:left;width:50px;position:absolute;top:580px;left:180px}
+.StartIndex_midle_2{float:left;width:80px;margin-left:350px;position:absolute;top:620px;display:none}
+.StartIndex_midle_0{width:300px}
+.StartIndex_midle_footerfont{color:#666;font-size:30px;text-align: center;}
+#mcover{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);display:none;z-index:4002}
+#mcover img{position:fixed;right:18px;top:5px;width:260px!important;height:180px!important;z-index:20001}
+.window{width:400px;height:600px;position:absolute;top:160px;margin-left:1px;z-index:10001}
+.xuanzhuan{-webkit-transform:rotateZ(720deg)}
+.content1{margin-top:200px;background-color:#FFF;width:100%;height:auto;margin:0 auto;text-align:center}
+.title{color:#0CF;font-size:14px}
+.title img{float:right}
+#downBord{position:fixed;width:100px;height:50px;top:700px;margin-left:500px;z-index:5000}
+#back1{background:url(../gameimage/background_01.png);break}
+#newhand{background-color:#CC9;filter:alpha(opacity=70);-moz-opacity:.7;-khtml-opacity:.7;opacity:.7;width:640px;height:1000px;position:absolute;margin-left:0;top:0;z-index:1000;border:0 solid green}
+#picturelayer{width:500px;height:600px;position:absolute;margin-left:80px;top:160px;z-index:2000}
+#picture{position:absolute;z-index:2000}
